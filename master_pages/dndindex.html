@@ -1,0 +1,20 @@
+<div class="ow_site_panel">{component class='BASE_CMP_Console'}</div>
+<div class="ow_page clearfix">
+    <div class="ow_header clearfix ow_stdmargin">
+    	<div class="ow_logo">
+            <h2><a href="{$siteUrl}">{$siteName}</a></h2>
+        </div>
+       {$main_menu}
+    </div>
+    {if $heading}<h1 class="ow_stdmargin {$heading_icon_class}">{$heading}</h1>{/if}
+    <div class="clearfix ow_dndindex">
+        {$content}
+    </div> 
+    <div class="ow_footer">
+    	{$bottom_menu}
+    	<div class="ow_copyright" style="text-align: left;">{text key='base+copyright'}</div>
+        <div style="float: right;padding-bottom: 30px;">{$bottomPoweredByLink}</div>
+    </div> 
+</div>
+
+{decorator name='floatbox'}
