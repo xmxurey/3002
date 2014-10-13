@@ -17,24 +17,20 @@
       <div class="logo">
         <h1><a href="#"><span>Strangers</span><small>Go and meet someone</small></a></h1>
       </div>
-      <div class="search">
-        <form method="get" id="search" action="#">
-          <span>
-          <input type="text" value="Search..." name="s" id="s" />
-          <input name="searchsubmit" type="image" src="images/search.gif" value="Go" id="searchsubmit" class="btn"  />
-          </span>
+      <div align="right">
+        <form method="get" action="#">
+          <h2>Welcome, Liu Xue </h2>
+          <button id="Button1">Log out </button>
         </form>
-        <!--/searchform -->
-        <div class="clr"></div>
       </div>
       <div class="clr"></div>
       <div class="menu_nav">
         <ul>
           <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="status.html">Event Status</a></li>
-          <li><a href="propose.html">Propose Event</a></li>
-          <li><a href="personal.html">Personal information</a></li>
-          <li><a href="about.html">About us</a></li>
+          <li><a href="invitation.html">Invitation Status</a></li>
+          <li><a href="propose.html">Propose Invitation</a></li>
+          <li><a href="personal.html">Personal Information</a></li>
+          <li><a href="about.html">About Us</a></li>
         </ul>
         <div class="clr"></div>
       </div>
@@ -48,11 +44,15 @@
             <div class="clr"></div>
             <p class="post-data"><span class="date">March 16, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">David</a> &nbsp;|&nbsp; </p>
             <img src="images/maze_runner.jpg" alt="" width="284" height="177"/>
-<table width="200" border="1">
+<table width="500">
               <tbody>
                 <tr>
                   <th scope="row">&nbsp;Date:</th>
-                  <td>&nbsp;<span class="date">March 16, 2014</span></td>
+                  <td>&nbsp;<span class="date">3:00 PM March 16, 2014</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">&nbsp; Venue</th>
+                  <td>&nbsp; Jurong Point </td>
                 </tr>
                 <tr>
                   <th scope="row">&nbsp;NO. of people</th>
@@ -74,11 +74,81 @@
             </div>
             <div class="clr"></div>
           </div>
+          <div class="article">
+            <h2><span>Gone Girl</span></h2>
+            <div class="clr"></div>
+            <p class="post-data"><span class="date">May 16, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Liu Xue</a> &nbsp;|&nbsp; </p>
+			<img src="images/Gone Girl.jpg" alt="" width="259" height="194"/>
+<table width="500">
+              <tbody>
+                <tr>
+                  <th scope="row">&nbsp;Date:</th>
+                  <td>&nbsp;<span class="date">7:00 PM Oct 29, 2014</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">&nbsp; Venue</th>
+                  <td>&nbsp; Vivo City </td>
+                </tr>
+                <tr>
+                  <th scope="row">&nbsp;NO. of people</th>
+                  <td>&nbsp;3</td>
+                </tr>
+                <tr>
+                  <th scope="row">&nbsp; Paying Method</th>
+                  <td>&nbsp; I treat </td>
+                </tr>
+              </tbody>
+            </table>
+            <div align="right">
+            <button onclick="myFunction1()" id="apply1">Apply </button>
+            <script>
+			function myFunction1() {
+				document.getElementById("apply1").textContent = "Apply Successfully";
+			}
+			</script>
+            </div>
+            <div class="clr"></div>
+          </div>
+          <div class="article">
+            <h2><span>Dracula Untold</span></h2>
+            <div class="clr"></div>
+            <p class="post-data"><span class="date">Aug 19, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Zhang Han</a> &nbsp;|&nbsp; </p>
+			<img src="images/Dracula.jpg" alt="" width="259" height="194"/>
+<table width="500">
+              <tbody>
+                <tr>
+                  <th scope="row">&nbsp;Date:</th>
+                  <td>&nbsp;<span class="date">5:00 PM Nov 03, 2014</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">&nbsp; Venue</th>
+                  <td>&nbsp; City Hall </td>
+                </tr>
+                <tr>
+                  <th scope="row">&nbsp;NO. of people</th>
+                  <td>&nbsp;2</td>
+                </tr>
+                <tr>
+                  <th scope="row">&nbsp; Paying Method</th>
+                  <td>&nbsp; AA </td>
+                </tr>
+              </tbody>
+            </table>
+            <div align="right">
+            <button onclick="myFunction2()" id="apply2">Apply </button>
+            <script>
+			function myFunction2() {
+				document.getElementById("apply2").textContent = "Apply Successfully";
+			}
+			</script>
+            </div>
+            <div class="clr"></div>
+          </div>
           <div class="pagenavi"><span class="pages">Page 1 of 2</span><span class="current">1</span><a href="#">2</a><a href="#" >&raquo;</a></div>
         </div>
         <div class="sidebar">
           <div class="gadget">
-            <h2 class="star"><span>Sidebar</span> Menu</h2>
+            <h2 class="star"><span>Event</span> List</h2>
             <div class="clr"></div>
             <ul class="sb_menu">
               <li ><a href="index.html">Restaurant</a></li>

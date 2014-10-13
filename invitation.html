@@ -4,11 +4,16 @@
 <title>SocialNet</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="style.css" rel="stylesheet" type="text/css" />
+<link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css" />
+<link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css" />
+<link href="jQueryAssets/jquery.ui.button.min.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/cufon-yui.js"></script>
 <script type="text/javascript" src="js/arial.js"></script>
 <script type="text/javascript" src="js/cuf_run.js"></script>
+<script src="jQueryAssets/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="jQueryAssets/jquery.ui-1.10.4.button.min.js" type="text/javascript"></script>
 </head>
 <body>
 <div class="main">
@@ -17,24 +22,20 @@
       <div class="logo">
         <h1><a href="#"><span>Strangers</span><small>Go and meet someone</small></a></h1>
       </div>
-      <div class="search">
-        <form method="get" id="search" action="#">
-          <span>
-          <input type="text" value="Search..." name="s" id="s" />
-          <input name="searchsubmit" type="image" src="images/search.gif" value="Go" id="searchsubmit" class="btn"  />
-          </span>
+      <div align="right">
+        <form method="get" action="#">
+          <h2>Welcome, Liu Xue </h2>
+          <button id="Button1">Log out </button>
         </form>
-        <!--/searchform -->
-        <div class="clr"></div>
       </div>
       <div class="clr"></div>
       <div class="menu_nav">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li class="active"><a href="status.html">Event Status</a></li>
-          <li><a href="propose.html">Propose Event</a></li>
-          <li><a href="personal.html">Personal information</a></li>
-          <li><a href="about.html">About us</a></li>
+          <li class="active"><a href="invitation.html">Invitation Status</a></li>
+          <li><a href="propose.html">Propose Invitation</a></li>
+          <li><a href="personal.html">Personal Information</a></li>
+          <li><a href="about.html">About Us</a></li>
         </ul>
         <div class="clr"></div>
       </div>
@@ -48,11 +49,15 @@
             <div class="clr"></div>
             <p class="post-data"><span class="date">March 16, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">David</a> &nbsp;|&nbsp; </p>
             <a href="#"></a><img src="images/Japanese Sushi.jpg" alt="" width="400" height="240"/>
-            <table width="200" border="1">
+            <table width="500">
               <tbody>
                 <tr>
                   <th scope="row">&nbsp;Date:</th>
-                  <td>&nbsp;<span class="date">March 16, 2014</span></td>
+                  <td>&nbsp;<span class="date">5:00 PM March 16, 2015</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">&nbsp; Venue</th>
+                  <td>&nbsp; City Hall </td>
                 </tr>
                 <tr>
                   <th scope="row">&nbsp;NO. of people</th>
@@ -64,14 +69,6 @@
                 </tr>
               </tbody>
             </table>
-            <div align="right">
-            <button onclick="myFunction()" id="apply">Apply </button>
-            <script>
-			function myFunction() {
-				document.getElementById("apply").textContent = "Apply Successfully";
-			}
-			</script>
-            </div>
             <div class="clr"></div>
           </div>
           <div class="article">	
@@ -81,22 +78,35 @@
               <p><a href="#">admin</a> Says:<br />
                 April 20th, 2009 at 2:17 pm</p>
               <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
+              <div align="right">
+                <button id="Button3">Accept</button>
+                <button id="Button4">Reject</button>
+              </div> 
             </div>
             <div class="comment"> <a href="#"><img src="images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
               <p><a href="#">Owner</a> Says:<br />
-                April 20th, 2009 at 3:21 pm</p>
+                April 20th, 2009 at 3:21 pm
+              </p>
               <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo.</p>
+              <div align="right">
+                <button id="Button3">Accept</button>
+                <button id="Button4">Reject</button>
+              </div>
             </div>
             <div class="comment"> <a href="#"><img src="images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
               <p><a href="#">admin</a> Says:<br />
                 April 20th, 2009 at 2:17 pm</p>
               <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
+              <div align="right">
+                <button id="Button1">Accept</button>
+                <button id="Button2">Reject</button>
+              </div>
             </div>
           </div>
         </div>
         <div class="sidebar">
           <div class="gadget">
-            <h2 class="star"><span>Sidebar</span> Menu</h2>
+            <h2 class="star"><span>Event</span> List</h2>
             <div class="clr"></div>
             <ul class="sb_menu">
               <li class="active"><a href="index.html">Restaurant</a></li>
