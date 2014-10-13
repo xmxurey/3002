@@ -56,9 +56,9 @@ p {
 p.spec {
 }
 a {
-	color:#97c950;
-	text-decoration:underline;
-}
+	color:#777;
+	font-style: italic;
+	}
 a.rm, a.com {
 	padding:0;
 	text-decoration:none;
