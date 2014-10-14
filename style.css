@@ -426,3 +426,23 @@ ol li .send {
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
 }
+/*Weinan*/
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: center;
+}
+.btn1{
+	border-spacing: 2px;
+	font-size: 14px;
+	float: right;
+	margin: 5px;
+	color: white;
+    border-radius: 8px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    border-color:#78bbe6;
+    background:#78bbe6;
+}
