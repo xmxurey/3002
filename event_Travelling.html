@@ -27,10 +27,11 @@
       <div class="menu_nav">
         <ul>
           <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="invitation.html">Invitation Status</a></li>
-          <li><a href="propose.html">Propose Invitation</a></li>
-          <li><a href="personal.html">Personal Information</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="invitation.html">My Invitation</a></li>
+          <li><a href="Application.html">My Application</a></li>
+          <li><a href="newInvitation.html">New Invitation</a></li>
+          <li><a href="personal.html">Personal information</a></li>
+          <li><a href="about.html">About us</a></li>
         </ul>
         <div class="clr"></div>
       </div>
@@ -68,7 +69,14 @@
             <button class="btn" onclick="myFunction()" id="apply">Apply </button>
             <script>
 			function myFunction() {
-				document.getElementById("apply").textContent = "Apply Successfully";
+				if (document.getElementById("apply").textContent == "Withdraw"){
+					if (confirm("Confirm to wsithdraw?") == true) {
+						document.getElementById("apply").textContent = "Apply";
+					} 
+				}
+				else if (confirm("Confirm to apply?") == true) {
+						document.getElementById("apply").textContent = "Withdraw";
+					} 
 			}
 			</script>
             </div>
@@ -103,7 +111,14 @@
             <button class="btn" onclick="myFunction1()" id="apply1">Apply </button>
             <script>
 			function myFunction1() {
-				document.getElementById("apply1").textContent = "Apply Successfully";
+				if (document.getElementById("apply1").textContent == "Withdraw"){
+					if (confirm("Confirm to wsithdraw?") == true) {
+						document.getElementById("apply1").textContent = "Apply";
+					} 
+				}
+				else if (confirm("Confirm to apply?") == true) {
+						document.getElementById("apply1").textContent = "Withdraw";
+					} 
 			}
 			</script>
             </div>
@@ -136,9 +151,16 @@
             </table>
             <div align="right">
             <button class="btn" onclick="myFunction2()" id="apply2">Apply </button>
-            <script>
+			<script>
 			function myFunction2() {
-				document.getElementById("apply2").textContent = "Apply Successfully";
+				if (document.getElementById("apply2").textContent == "Withdraw"){
+					if (confirm("Confirm to wsithdraw?") == true) {
+						document.getElementById("apply2").textContent = "Apply";
+					} 
+				}
+				else if (confirm("Confirm to apply?") == true) {
+						document.getElementById("apply2").textContent = "Withdraw";
+					} 
 			}
 			</script>
             </div>

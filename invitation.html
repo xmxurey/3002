@@ -32,10 +32,11 @@
       <div class="menu_nav">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li class="active"><a href="invitation.html">Invitation Status</a></li>
-          <li><a href="propose.html">Propose Invitation</a></li>
-          <li><a href="personal.html">Personal Information</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li class="active"><a href="invitation.html">My Invitation</a></li>
+          <li><a href="Application.html">My Application</a></li>
+          <li><a href="newInvitation.html">New Invitation</a></li>
+          <li><a href="personal.html">Personal information</a></li>
+          <li><a href="about.html">About us</a></li>
         </ul>
         <div class="clr"></div>
       </div>
@@ -79,8 +80,35 @@
                 Sept 20th, 2014 at 2:17 pm</p>
               <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
               <div align="right">
-                <button class="btn1" id="Button3">Accept</button>
-                <button class="btn1" id="Button4">Reject</button>
+                <button class="btn1" id="accept1" onclick="Accept1()">Accept</button>
+                <button class="btn1" id="reject1" onclick="Reject1()">Reject</button>
+                <script>
+					function Accept1(){
+						if (document.getElementById("accept1").textContent == "Accepted(Cancel)"){
+							if (confirm("Confirm to cancel?") == true) {
+								document.getElementById("accept1").textContent = "Accept";
+								document.getElementById("reject1").style.visibility="visible";
+							} 
+						}
+						else if (confirm("Confirm to accept this application?") == true) {
+								document.getElementById("accept1").textContent = "Accepted(Cancel)";
+								document.getElementById("reject1").style.visibility="hidden";
+						}
+					}
+					
+					function Reject1(){
+						if (document.getElementById("reject1").textContent == "Rejected(Cancel)"){
+							if (confirm("Confirm to cancel?") == true) {
+								document.getElementById("reject1").textContent = "Reject";
+								document.getElementById("accept1").style.visibility="visible";
+							} 
+						}
+						else if (confirm("Confirm to reject this application?") == true) {
+								document.getElementById("reject1").textContent = "Rejected(Cancel)";
+								document.getElementById("accept1").style.visibility="hidden";
+						}
+					}
+				</script>
               </div> 
             </div>
             <div class="comment"> <a href="#"><img src="images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
@@ -89,8 +117,35 @@
               </p>
               <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo.</p>
               <div align="right">
-                <button class="btn1" id="Button3">Accept</button>
-                <button class="btn1" id="Button4">Reject</button>
+                <button class="btn1" id="accept2" onclick="Accept2()">Accept</button>
+                <button class="btn1" id="reject2" onclick="Reject2()">Reject</button>
+                <script>
+					function Accept2(){
+						if (document.getElementById("accept2").textContent == "Accepted(Cancel)"){
+							if (confirm("Confirm to cancel?") == true) {
+								document.getElementById("accept2").textContent = "Accept";
+								document.getElementById("reject2").style.visibility="visible";
+							} 
+						}
+						else if (confirm("Confirm to accept this application?") == true) {
+								document.getElementById("accept2").textContent = "Accepted(Cancel)";
+								document.getElementById("reject2").style.visibility="hidden";
+						}
+					}
+					
+					function Reject2(){
+						if (document.getElementById("reject2").textContent == "Rejected(Cancel)"){
+							if (confirm("Confirm to cancel?") == true) {
+								document.getElementById("reject2").textContent = "Reject";
+								document.getElementById("accept2").style.visibility="visible";
+							} 
+						}
+						else if (confirm("Confirm to reject this application?") == true) {
+								document.getElementById("reject2").textContent = "Rejected(Cancel)";
+								document.getElementById("accept2").style.visibility="hidden";
+						}
+					}
+				</script>
               </div>
             </div>
             <div class="comment"> <a href="#"><img src="images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
@@ -98,8 +153,35 @@
                 Sept 20th, 2014 at 2:17 pm</p>
               <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
               <div align="right">
-                <button class="btn1" id="Button3">Accept</button>
-                <button class="btn1" id="Button4">Reject</button>
+                <button class="btn1" id="accept3" onclick="Accept3()">Accept</button>
+                <button class="btn1" id="reject3" onclick="Reject3()">Reject</button>
+                <script>
+					function Accept3(){
+						if (document.getElementById("accept3").textContent == "Accepted(Cancel)"){
+							if (confirm("Confirm to cancel?") == true) {
+								document.getElementById("accept3").textContent = "Accept";
+								document.getElementById("reject3").style.visibility="visible";
+							} 
+						}
+						else if (confirm("Confirm to accept this application?") == true) {
+								document.getElementById("accept3").textContent = "Accepted(Cancel)";
+								document.getElementById("reject3").style.visibility="hidden";
+						}
+					}
+					
+					function Reject3(){
+						if (document.getElementById("reject3").textContent == "Rejected(Cancel)"){
+							if (confirm("Confirm to cancel?") == true) {
+								document.getElementById("reject3").textContent = "Reject";
+								document.getElementById("accept3").style.visibility="visible";
+							} 
+						}
+						else if (confirm("Confirm to reject this application?") == true) {
+								document.getElementById("reject3").textContent = "Rejected(Cancel)";
+								document.getElementById("accept3").style.visibility="hidden";
+						}
+					}
+				</script>
               </div>
             </div>
           </div>
