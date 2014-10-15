@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -11,16 +14,6 @@
 <script type="text/javascript" src="js/cuf_run.js"></script>
 </head>
 <body>
-<?php
-$con=mysqli_connect("localhost","root","NEWPASSWORD","CZ3002");
-
-// Check connection
-if (mysqli_connect_errno()) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-
-mysqli_close($con);
-?>
 <div class="main">
   <div class="main_resize">
     <div class="header">
@@ -29,19 +22,19 @@ mysqli_close($con);
       </div>
       <div align="right">
         <form method="get" action="#">
-          <h2>Welcome, Liu Xue </h2>
-          <a href="login.html">Log Out</a>
+          <h2>Welcome, <?php echo $_SESSION["username"]; ?> </h2>
+          <a href="login.php">Log Out</a>
         </form>
       </div>
       <div class="clr"></div>
       <div class="menu_nav">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="invitation.html">My Invitation</a></li>
-          <li><a href="Application.html">My Application</a></li>
-          <li><a href="newInvitation.html">New Invitation</a></li>
-          <li class="active"><a href="personal.html">Personal information</a></li>
-          <li><a href="about.html">About us</a></li>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="invitation.php">My Invitation</a></li>
+          <li><a href="application.php">My Application</a></li>
+          <li><a href="newInvitation.php">New Invitation</a></li>
+          <li class="active"><a href="personal.php">Personal information</a></li>
+          <li><a href="about.php">About us</a></li>
         </ul>
         <div class="clr"></div>
       </div>

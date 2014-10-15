@@ -1,7 +1,11 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>SocialNet</title>
+<title>Strangers</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
@@ -19,19 +23,19 @@
       </div>
       <div align="right">
         <form method="get" action="#">
-          <h2>Welcome, Liu Xue </h2>
-          <a href="login.html">Log Out</a>
+          <h2>Welcome, <?php echo $_SESSION["username"]; ?> </h2>
+          <a href="login.php">Log Out</a>
         </form>
       </div>
       <div class="clr"></div>
       <div class="menu_nav">
         <ul>
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="invitation.html">My Invitation</a></li>
-          <li><a href="Application.html">My Application</a></li>
-          <li><a href="newInvitation.html">New Invitation</a></li>
-          <li><a href="personal.html">Personal information</a></li>
-          <li><a href="about.html">About us</a></li>
+          <li class="active"><a href="index.php">Home</a></li>
+          <li><a href="invitation.php">My Invitation</a></li>
+          <li><a href="application.php">My Application</a></li>
+          <li><a href="newInvitation.php">New Invitation</a></li>
+          <li><a href="personal.php">Personal information</a></li>
+          <li><a href="about.php">About us</a></li>
         </ul>
         <div class="clr"></div>
       </div>
@@ -41,31 +45,33 @@
       <div class="content_bg">
         <div class="mainbar">
           <div class="article">
-            <h2><span>Bali</span></h2>
+            <h2><span>Maze Runner</span></h2>
             <div class="clr"></div>
-            <p class="post-data"><span class="date">Oct 16, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Mengxing</a> &nbsp;|&nbsp; </p>
-			<img src="images/Bali.jpg" alt="" width="282" height="179"/>
+            <p class="post-data"><span class="date">March 16, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">David</a> &nbsp;|&nbsp; </p>
+            <img src="images/maze_runner.jpg" alt="" width="284" height="177"/>
 <table width="500">
               <tbody>
                 <tr>
                   <th scope="row">&nbsp;Date:</th>
-                  <td>&nbsp;<span class="date">6:00PM Nov 04, 2014</span></td>
+                  <td>&nbsp;<span class="date">3:00 PM March 16, 2014</span></td>
                 </tr>
                 <tr>
                   <th scope="row">&nbsp; Venue</th>
-                  <td>&nbsp; Bali </td>
+                  <td>&nbsp; Jurong Point </td>
                 </tr>
                 <tr>
                   <th scope="row">&nbsp;NO. of people</th>
-                  <td>&nbsp;2</td>
+                  <td>&nbsp;3</td>
                 </tr>
                 <tr>
                   <th scope="row">&nbsp; Paying Method</th>
-                  <td>&nbsp; I treat </td>
+                  <td>&nbsp; AA </td>
                 </tr>
               </tbody>
             </table>
-            <div align="right">
+<div class="clr"></div>
+          </div>
+          <div align="right">
             <button class="btn" onclick="myFunction()" id="apply">Apply </button>
             <script>
 			function myFunction() {
@@ -79,31 +85,29 @@
 					} 
 			}
 			</script>
-            </div>
-            <div class="clr"></div>
           </div>
-          <div class="article">
-            <h2><span>London</span></h2>
+<div class="article">
+            <h2><span>Gone Girl</span></h2>
             <div class="clr"></div>
-            <p class="post-data"><span class="date">Nov 16, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Liu Xue</a> &nbsp;|&nbsp; </p>
-			<img src="images/London.jpg" alt="" width="284" height="177"/>
+            <p class="post-data"><span class="date">May 16, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Liu Xue</a> &nbsp;|&nbsp; </p>
+			<img src="images/Gone Girl.jpg" alt="" width="259" height="194"/>
 <table width="500">
               <tbody>
                 <tr>
                   <th scope="row">&nbsp;Date:</th>
-                  <td>&nbsp;<span class="date">9:00AM Nov 16, 2014</span></td>
+                  <td>&nbsp;<span class="date">7:00 PM Oct 29, 2014</span></td>
                 </tr>
                 <tr>
                   <th scope="row">&nbsp; Venue</th>
-                  <td>&nbsp; London </td>
+                  <td>&nbsp; Vivo City </td>
                 </tr>
                 <tr>
                   <th scope="row">&nbsp;NO. of people</th>
-                  <td>&nbsp;4</td>
+                  <td>&nbsp;3</td>
                 </tr>
                 <tr>
                   <th scope="row">&nbsp; Paying Method</th>
-                  <td>&nbsp; AA </td>
+                  <td>&nbsp; I treat </td>
                 </tr>
               </tbody>
             </table>
@@ -125,19 +129,19 @@
             <div class="clr"></div>
           </div>
           <div class="article">
-            <h2><span>Malasia</span></h2>
+            <h2><span>Dracula Untold</span></h2>
             <div class="clr"></div>
-            <p class="post-data"><span class="date">Oct 04, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Weinan</a> &nbsp;|&nbsp; </p>
-			<img src="images/Malasia.jpg" width="275" height="183" alt=""/>
+            <p class="post-data"><span class="date">Aug 19, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Zhang Han</a> &nbsp;|&nbsp; </p>
+			<img src="images/Dracula.jpg" alt="" width="259" height="194"/>
 <table width="500">
               <tbody>
                 <tr>
                   <th scope="row">&nbsp;Date:</th>
-                  <td>&nbsp;<span class="date">9:00AM Dec 16, 2014</span></td>
+                  <td>&nbsp;<span class="date">5:00 PM Nov 03, 2014</span></td>
                 </tr>
                 <tr>
                   <th scope="row">&nbsp; Venue</th>
-                  <td>&nbsp; Malasia </td>
+                  <td>&nbsp; City Hall </td>
                 </tr>
                 <tr>
                   <th scope="row">&nbsp;NO. of people</th>
@@ -151,10 +155,10 @@
             </table>
             <div align="right">
             <button class="btn" onclick="myFunction2()" id="apply2">Apply </button>
-			<script>
+            <script>
 			function myFunction2() {
 				if (document.getElementById("apply2").textContent == "Withdraw"){
-					if (confirm("Confirm to wsithdraw?") == true) {
+					if (confirm("Confirm to withdraw?") == true) {
 						document.getElementById("apply2").textContent = "Apply";
 					} 
 				}
@@ -170,13 +174,13 @@
         </div>
         <div class="sidebar">
           <div class="gadget">
-            <h2 class="star"><span>Sidebar</span> Menu</h2>
+            <h2 class="star"><span>Event</span> List</h2>
             <div class="clr"></div>
             <ul class="sb_menu">
-              <li><a href="index.html">Restaurant</a></li>
-              <li><a href="event_Movie.html">Movie</a></li>
-              <li class="active"><a href="event_Travelling.html">Travelling</a></li>
-              <li><a href="event_Outdoor.html">Outdoor Activities</a></li>
+              <li ><a href="index.php">Restaurant</a></li>
+              <li class="active"><a href="event_Movie.php">Movie</a></li>
+              <li><a href="event_Travelling.php">Travelling</a></li>
+              <li><a href="event_Outdoor.php">Outdoor Activities</a></li>
             </ul>
           </div>
           <div class="gadget">

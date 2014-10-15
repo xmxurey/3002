@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -14,7 +15,7 @@
 	  <section class="container">
 	    <div class="login">
 	      <h1>Welcome to Stranger!</h1>
-	      <form method="post" action="index.html">
+	      <form method="post" action="index.php">
 	        <p><input type="text" name="login" value="" placeholder="Username or Email"></p>
 	        <p><input type="password" name="password" value="" placeholder="Password"></p>
 	        <p class="remember_me">

@@ -1,3 +1,18 @@
+<?php
+	session_start();
+?>
+
+<script type="text/javascript">
+	function func1() {
+		
+		var data = "<?php echo $_SESSION["apply"]; ?>";
+		var username = "<?php echo $_SESSION["username"]; ?>";
+		if (data != "yes")
+			document.getElementById("sushi").style.visibility="hidden";
+	}
+	window.onload = func1;
+</script> 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -24,19 +39,19 @@
       </div>
       <div align="right">
         <form method="get" action="#">
-          <h2>Welcome, Liu Xue </h2>
-          <a href="login.html">Log Out</a>
+          <h2>Welcome, <?php echo $_SESSION["username"]; ?> </h2>
+          <a href="login.php">Log Out</a>
         </form>
       </div>
       <div class="clr"></div>
       <div class="menu_nav">
         <ul>
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="invitation.html">My Invitation</a></li>
-          <li><a href="Application.html">My Application</a></li>
-          <li><a href="newInvitation.html">New Invitation</a></li>
-          <li><a href="personal.html">Personal information</a></li>
-          <li><a href="about.html">About us</a></li>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="invitation.php">My Invitation</a></li>
+          <li  class="active"><a href="application.php">My Application</a></li>
+          <li><a href="newInvitation.php">New Invitation</a></li>
+          <li><a href="personal.php">Personal information</a></li>
+          <li><a href="about.php">About us</a></li>
         </ul>
         <div class="clr"></div>
       </div>
@@ -45,49 +60,7 @@
     <div class="content">
       <div class="content_bg">
         <div class="mainbar">
-          <div class="article">
-            <h2><span>Japanese Sushi</span></h2>
-            <div class="clr"></div>
-            <p class="post-data"><span class="date">Sept 14, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Liu Xue</a> &nbsp;|&nbsp; </p>
-            <a href="#"></a><img src="images/Japanese Sushi.jpg" alt="" width="400" height="240"/>
-            <table width="00">
-              <tbody>
-                <tr>
-                  <th scope="row">&nbsp;Date:</th>
-                  <td>&nbsp;<span class="date">5:00 PM March 16, 2015</span></td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp; Venue</th>
-                  <td>&nbsp; City Hall </td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp;NO. of people</th>
-                  <td>&nbsp;2</td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp; Paying Method</th>
-                  <td>&nbsp; AA </td>
-                </tr>
-              </tbody>
-            </table>
-            <div align="right">
-            <button class="btn" onclick="myFunction()" id="apply">Apply </button>
-            <script>
-			function myFunction() {
-				if (document.getElementById("apply").textContent == "Withdraw"){
-					if (confirm("Confirm to wsithdraw?") == true) {
-						document.getElementById("apply").textContent = "Apply";
-					} 
-				}
-				else if (confirm("Confirm to apply?") == true) {
-						document.getElementById("apply").textContent = "Withdraw";
-					} 
-			}
-			</script>
-            </div>
-            <div class="clr"></div>
-          </div>
-          <div class="article">
+          <div class="article" id="DTF">
             <h2><span>Din Tai Fung</span></h2>
             <div class="clr"></div>
             <p class="post-data"><span class="date">Oct 01, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Mengxing</a> &nbsp;|&nbsp; </p>
@@ -113,32 +86,27 @@
               </tbody>
             </table>
             <div align="right">
-            <button class="btn" onclick="myFunction1()" id="apply1">Apply </button>
+            <button class="btn1" id="cancel" onclick="Cancel()">Cancel Application</button>
             <script>
-			function myFunction1() {
-				if (document.getElementById("apply1").textContent == "Withdraw"){
-					if (confirm("Confirm to wsithdraw?") == true) {
-						document.getElementById("apply1").textContent = "Apply";
-					} 
+				function Cancel(){
+					if (confirm("Confirm to Cancel this application?") == true) {
+								document.getElementById("DTF").style.visibility="hidden";
+					}
 				}
-				else if (confirm("Confirm to apply?") == true) {
-						document.getElementById("apply1").textContent = "Withdraw";
-					} 
-			}
 			</script>
             </div>
             <div class="clr"></div>
           </div>
-          <div class="article">
+          <div class="article" id="sushi">
             <h2><span>Japanese Sushi</span></h2>
             <div class="clr"></div>
-            <p class="post-data"><span class="date">Sept 23, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Jingzhe</a> &nbsp;|&nbsp; </p>
+            <p class="post-data"><span class="date">Sept 14, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Liu Xue</a> &nbsp;|&nbsp; </p>
             <a href="#"></a><img src="images/Japanese Sushi.jpg" alt="" width="400" height="240"/>
             <table width="00">
               <tbody>
                 <tr>
                   <th scope="row">&nbsp;Date:</th>
-                  <td>&nbsp;<span class="date">5:00 PM Oct 29, 2015</span></td>
+                  <td>&nbsp;<span class="date">5:00 PM March 16, 2015</span></td>
                 </tr>
                 <tr>
                   <th scope="row">&nbsp; Venue</th>
@@ -146,42 +114,36 @@
                 </tr>
                 <tr>
                   <th scope="row">&nbsp;NO. of people</th>
-                  <td>&nbsp;3</td>
+                  <td>&nbsp;2</td>
                 </tr>
                 <tr>
                   <th scope="row">&nbsp; Paying Method</th>
-                  <td>&nbsp; I treat </td>
+                  <td>&nbsp; AA </td>
                 </tr>
               </tbody>
             </table>
             <div align="right">
-            <button class="btn" onclick="myFunction2()" id="apply2">Apply </button>
+            <button class="btn1" id="cancel" onclick="Cancel1()">Cancel Application</button>
             <script>
-			function myFunction2() {
-				if (document.getElementById("apply2").textContent == "Withdraw"){
-					if (confirm("Confirm to wsithdraw?") == true) {
-						document.getElementById("apply2").textContent = "Apply";
-					} 
+				function Cancel1(){
+					if (confirm("Confirm to Cancel this application?") == true) {
+								document.getElementById("sushi").style.visibility="hidden";
+					}
 				}
-				else if (confirm("Confirm to apply?") == true) {
-						document.getElementById("apply2").textContent = "Withdraw";
-					} 
-			}
 			</script>
             </div>
             <div class="clr"></div>
           </div>
-          <div class="pagenavi"><span class="pages">Page 1 of 2</span><span class="current">1</span><a href="#">2</a><a href="#" >&raquo;</a></div>
         </div>
         <div class="sidebar">
           <div class="gadget">
             <h2 class="star"><span>Event</span> List</h2>
             <div class="clr"></div>
             <ul class="sb_menu">
-              <li class="active"><a href="index.html">Restaurant</a></li>
-              <li><a href="event_Movie.html">Movie</a></li>
-              <li><a href="event_Travelling.html">Travelling</a></li>
-              <li><a href="event_Outdoor.html">Outdoor Activities</a></li>
+              <li class="active"><a href="index.php">Restaurant</a></li>
+              <li><a href="event_Movie.php">Movie</a></li>
+              <li><a href="event_Travelling.php">Travelling</a></li>
+              <li><a href="event_Outdoor.php">Outdoor Activities</a></li>
             </ul>
           </div>
           <div class="gadget">
@@ -204,10 +166,5 @@
     <div class="clr"></div>
   </div>
 </div>
-<script type="text/javascript">
-$(function() {
-	$( "#Button1" ).button(); 
-});
-</script>
 </body>
 </html>

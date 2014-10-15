@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -24,19 +28,19 @@
       </div>
       <div align="right">
         <form method="get" action="#">
-          <h2>Welcome, Liu Xue </h2>
-          <a href="login.html">Log Out</a>
+          <h2>Welcome, <?php echo $_SESSION["username"]; ?> </h2>
+          <a href="login.php">Log Out</a>
         </form>
       </div>
       <div class="clr"></div>
       <div class="menu_nav">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li class="active"><a href="invitation.html">My Invitation</a></li>
-          <li><a href="Application.html">My Application</a></li>
-          <li><a href="newInvitation.html">New Invitation</a></li>
-          <li><a href="personal.html">Personal information</a></li>
-          <li><a href="about.html">About us</a></li>
+          <li><a href="index.php">Home</a></li>
+          <li class="active"><a href="invitation.php">My Invitation</a></li>
+          <li><a href="Application.php">My Application</a></li>
+          <li><a href="newInvitation.php">New Invitation</a></li>
+          <li><a href="personal.php">Personal information</a></li>
+          <li><a href="about.php">About us</a></li>
         </ul>
         <div class="clr"></div>
       </div>
@@ -44,7 +48,7 @@
     </div>
     <div class="content">
       <div class="content_bg">
-        <div class="mainbar">
+        <div class="mainbar" id="invitation">
           <div class="article">
             <h2><span>Japanese Sushi</span></h2>
             <div class="clr"></div>
@@ -75,10 +79,11 @@
           <div class="article">	
             <h2><span>3</span> Applications</h2>
             <div class="clr"></div>
+            <div class="sidebar">
             <div class="comment"> <a href="#"><img src="images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
-              <p><a href="#">Xiaoying</a> Says:<br />
+              <p><a href="#">Mengxing</a> applys:<br />
                 Oct 16th, 2014 at 2:17 pm</p>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
+              
               <div align="right">
                 <button class="btn1" id="accept1" onclick="Accept1()">Accept</button>
                 <button class="btn1" id="reject1" onclick="Reject1()">Reject</button>
@@ -111,11 +116,13 @@
 				</script>
               </div> 
             </div>
+            </div>                        
+            <div class="sidebar">
             <div class="comment"> <a href="#"><img src="images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
-              <p><a href="#">Weinan</a> Says:<br />
+              <p><a href="#">Weinan</a> applys:<br />
                 Oct 20th, 2014 at 3:21 pm
               </p>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo.</p>
+             
               <div align="right">
                 <button class="btn1" id="accept2" onclick="Accept2()">Accept</button>
                 <button class="btn1" id="reject2" onclick="Reject2()">Reject</button>
@@ -148,10 +155,25 @@
 				</script>
               </div>
             </div>
-            <div class="comment"> <a href="#"><img src="images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
-              <p><a href="#">Mengxing</a> Says:<br />
+            </div>
+            
+			<script type="text/javascript">
+                function func1() {
+					
+					var data = "<?php echo $_SESSION["apply"]; ?>";
+					var username = "<?php echo $_SESSION["username"]; ?>";
+					if (username == "Zhan Xiaoying")
+						document.getElementById("invitation").style.visibility="hidden";
+					if (data != "yes")
+                    	document.getElementById("zxy").style.visibility="hidden";
+                }
+                window.onload = func1;
+            </script>            
+			<div class="sidebar" id="zxy">
+            <div class="comment" > <a href="#"><img src="images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
+              <p><a href="#">Zhan Xiaoying</a> applys:<br />
                 Oct 24th, 2014 at 2:17 pm</p>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
+             
               <div align="right">
                 <button class="btn1" id="accept3" onclick="Accept3()">Accept</button>
                 <button class="btn1" id="reject3" onclick="Reject3()">Reject</button>
@@ -184,6 +206,7 @@
 				</script>
               </div>
             </div>
+            </div>
           </div>
         </div>
         <div class="sidebar">
@@ -191,7 +214,7 @@
             <h2 class="star"><span>Event</span> List</h2>
             <div class="clr"></div>
             <ul class="sb_menu">
-              <li class="active"><a href="index.html">Restaurant</a></li>
+              <li class="active"><a href="index.php">Restaurant</a></li>
               <li><a href="event_Movie.html">Movie</a></li>
               <li><a href="event_Travelling.html">Travelling</a></li>
               <li><a href="event_Outdoor.html">Outdoor Activities</a></li>
