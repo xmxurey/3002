@@ -428,7 +428,7 @@ ol li .send {
 }
 /*Weinan*/
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid #E5E5CC;
     border-collapse: collapse;
 }
 th, td {
