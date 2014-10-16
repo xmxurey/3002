@@ -77,94 +77,18 @@
             <div class="clr"></div>
           </div>
           <div class="article">	
-            <h2><span>3</span> Applications</h2>
+            <h2>Application(s)</h2>
             <div class="clr"></div>
-            <div class="sidebar">
-            <div class="comment"> <a href="#"><img src="images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
-              <p><a href="#">Mengxing</a> applys:<br />
-                Oct 16th, 2014 at 2:17 pm</p>
-              
-              <div align="right">
-                <button class="btn1" id="accept1" onclick="Accept1()">Accept</button>
-                <button class="btn1" id="reject1" onclick="Reject1()">Reject</button>
-                <script>
-					function Accept1(){
-						if (document.getElementById("accept1").textContent == "Accepted(Cancel)"){
-							if (confirm("Confirm to cancel?") == true) {
-								document.getElementById("accept1").textContent = "Accept";
-								document.getElementById("reject1").style.visibility="visible";
-							} 
-						}
-						else if (confirm("Confirm to accept this application?") == true) {
-								document.getElementById("accept1").textContent = "Accepted(Cancel)";
-								document.getElementById("reject1").style.visibility="hidden";
-						}
-					}
-					
-					function Reject1(){
-						if (document.getElementById("reject1").textContent == "Rejected(Cancel)"){
-							if (confirm("Confirm to cancel?") == true) {
-								document.getElementById("reject1").textContent = "Reject";
-								document.getElementById("accept1").style.visibility="visible";
-							} 
-						}
-						else if (confirm("Confirm to reject this application?") == true) {
-								document.getElementById("reject1").textContent = "Rejected(Cancel)";
-								document.getElementById("accept1").style.visibility="hidden";
-						}
-					}
-				</script>
-              </div> 
-            </div>
-            </div>                        
-            <div class="sidebar">
-            <div class="comment"> <a href="#"><img src="images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
-              <p><a href="#">Weinan</a> applys:<br />
-                Oct 20th, 2014 at 3:21 pm
-              </p>
-             
-              <div align="right">
-                <button class="btn1" id="accept2" onclick="Accept2()">Accept</button>
-                <button class="btn1" id="reject2" onclick="Reject2()">Reject</button>
-                <script>
-					function Accept2(){
-						if (document.getElementById("accept2").textContent == "Accepted(Cancel)"){
-							if (confirm("Confirm to cancel?") == true) {
-								document.getElementById("accept2").textContent = "Accept";
-								document.getElementById("reject2").style.visibility="visible";
-							} 
-						}
-						else if (confirm("Confirm to accept this application?") == true) {
-								document.getElementById("accept2").textContent = "Accepted(Cancel)";
-								document.getElementById("reject2").style.visibility="hidden";
-						}
-					}
-					
-					function Reject2(){
-						if (document.getElementById("reject2").textContent == "Rejected(Cancel)"){
-							if (confirm("Confirm to cancel?") == true) {
-								document.getElementById("reject2").textContent = "Reject";
-								document.getElementById("accept2").style.visibility="visible";
-							} 
-						}
-						else if (confirm("Confirm to reject this application?") == true) {
-								document.getElementById("reject2").textContent = "Rejected(Cancel)";
-								document.getElementById("accept2").style.visibility="hidden";
-						}
-					}
-				</script>
-              </div>
-            </div>
-            </div>
             
 			<script type="text/javascript">
                 function func1() {
 					
-					var data = "<?php echo $_SESSION["apply"]; ?>";
+					var invitation = "<?php echo $_SESSION["invitation"]; ?>";
+					var apply = "<?php echo $_SESSION["apply"]; ?>";
 					var username = "<?php echo $_SESSION["username"]; ?>";
-					if (username == "Zhan Xiaoying")
+					if (username == "Zhan Xiaoying" || invitation != "yes")
 						document.getElementById("invitation").style.visibility="hidden";
-					if (data != "yes")
+					if (apply != "yes")
                     	document.getElementById("zxy").style.visibility="hidden";
                 }
                 window.onload = func1;

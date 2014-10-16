@@ -29,15 +29,7 @@
       <div align="right">
         <form method="get" action="#">
           <h2>Welcome, 
-		  <?php
-            	$username = $_POST["login"];
-                if ($username == "liuxue"){
-                	$_SESSION["username"] = "Liu Xue";
-            	} else {
-                	$_SESSION["username"] = "Zhan Xiaoying";
-                }
-				echo $_SESSION["username"];
-            ?> </h2>
+		  <?php echo $_SESSION["username"]; ?> </h2>
           <a href="login.php">Log Out</a>
         </form>
       </div>
@@ -59,10 +51,10 @@
       <div class="content_bg">
         <div class="mainbar">
           <div class="article">
-            <h2><span>Japanese Sushi</span></h2>
+            <h2><span>Seoul Garden</span></h2>
             <div class="clr"></div>
-            <p class="post-data"><span class="date">Sept 14, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Liu Xue</a> &nbsp;|&nbsp; </p>
-            <a href="#"></a><img src="images/Japanese Sushi.jpg" alt="" width="400" height="240"/>
+            <p class="post-data"><span class="date">Sept 14, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Weinan</a> &nbsp;|&nbsp; </p>
+            <a href="#"></a><img src="images/Seoul Garden + Singapore River Revosed Cruise 2.jpg" width="468" height="312" alt=""/>
             <table width="00">
               <tbody>
                 <tr>
@@ -95,10 +87,6 @@
 				else if (confirm("Confirm to apply?") == true) {
 						document.getElementById("apply").textContent = "Withdraw";
 					}
-				<?php
-            	$_SESSION["apply"] = "yes";
-				echo $_SESSION["apply"];
-            	?> 
 			}
 			</script>
             </div>
@@ -149,7 +137,7 @@
           <div class="article">
             <h2><span>Japanese Sushi</span></h2>
             <div class="clr"></div>
-            <p class="post-data"><span class="date">Sept 23, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Jingzhe</a> &nbsp;|&nbsp; </p>
+            <p class="post-data"><span class="date">Oct 16, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Liu Xue</a> &nbsp;|&nbsp; </p>
             <a href="#"></a><img src="images/Japanese Sushi.jpg" alt="" width="400" height="240"/>
             <table width="00">
               <tbody>
@@ -183,6 +171,10 @@
 				else if (confirm("Confirm to apply?") == true) {
 						document.getElementById("apply2").textContent = "Withdraw";
 					} 
+				<?php
+            	$_SESSION["apply"] = "yes";
+				echo $_SESSION["apply"];
+            	?> 
 			}
 			</script>
             </div>

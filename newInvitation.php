@@ -56,6 +56,15 @@
                   <input id="title" name="title" class="text" />
                 </li>
                 <li>
+                  <label for="description">Type</label>
+                  <select id = "demo1" enabled>
+                	<option value = "Restaurant">Restaurant</option>
+                	<option value = "Movie">Movie</option>
+                    <option value = "Travelling">Travelling</option>
+                    <option value = "Outdoor_Activities">Outdoor Activities</option>
+             	  </select>
+                </li>
+                <li>
                   <label for="time">Time</label>
                   <input type="date" />
                   <input type="time" />
@@ -65,15 +74,24 @@
                   <input id="venue" name="venue" class="text" />
                 </li>
                 <li>
+                  <label for="description">No. of People</label>
+                  <input id="description" name="description" class="text"/>
+                </li>
+                <li>
                   <label for="paying">Paying Method</label>
                   <input id="paying" name="paying" class="text"/>
                 </li>
                 <li>
-                  <label for="description">Brief Description</label>
-                  <input id="description" name="description" class="text"/>
-                <li>
-                  <input type="image" name="imageField" id="imageField" src="images/submit.gif" class="send" />
+                  <input type="image" name="imageField" id="imageField" src="images/submit.gif" class="send" onclick="invitation()"/>
                   <div class="clr"></div>
+                   <script>
+					function invitation() {
+						<?php
+						$_SESSION["invitation"] = "yes";
+						echo $_SESSION["invitation"];
+						?> 
+					}
+					</script>
                 </li>
               </ol>
             </form>
