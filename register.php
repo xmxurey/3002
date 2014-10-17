@@ -13,6 +13,8 @@
   </head>
 <body>
 
+
+
 <section class="container">
 <div class="login">
 <p>
@@ -26,27 +28,39 @@ VALUES
 $rs=mysql_query($sql);
 if (!$rs)
   { echo '<script language="javascript">window.alert("The username has been registered");</script>';
-echo '<script language="javascript">window.location="register.html";</script>';
+echo '<script language="javascript">window.location="Register.html";</script>';
   die();
 
-  }
-$userid=mysql_query("SELECT userAccountID FROM useraccount WHERE UserAccount.userAccountID='$_POST[username]'");
-  
+}
+$query="SELECT * FROM useraccount WHERE username='$_POST[username]'";
+$re=mysql_query($query);
+$row = mysql_fetch_row($re);
+
+if (!$re)
+  { echo '<script language="javascript">window.alert("Error1");</script>';
+echo '<script language="javascript">window.location="Register.html";</script>';
+  die();
+
+}
+
 $sql="INSERT INTO userprofile(userAccountID,name, phoneNumber)
 VALUES
-($userid,'$_POST[namefield]','$_POST[tele]')";
+($row[0],'$_POST[username]','$_POST[password1]')";
 
 $rs=mysql_query($sql);
 if (!$rs)
-  { echo '<script language="javascript">window.alert("The username has been registered");</script>';
-echo '<script language="javascript">window.location="register.html";</script>';
+  { echo '<script language="javascript">window.alert("Error2");</script>';
+echo '<script language="javascript">window.location="Register.html";</script>';
   die();
 
-  }  
-  
+}
+
+
+
 else{
 echo ("Congratulation! You have successfully registered!");
 }
+
 
 mysql_close();
 ?>
