@@ -19,7 +19,7 @@
 <?php
 include "connect.php";
 
-$sql="INSERT INTO UserAccount(username, password)
+$sql="INSERT INTO useraccount(username, password)
 VALUES
 ('$_POST[username]','$_POST[password1]')";
 
@@ -30,9 +30,9 @@ echo '<script language="javascript">window.location="register.html";</script>';
   die();
 
   }
-$userid=mysql_query("SELECT userAccountID FROM UserAccount WHERE UserAccount.userAccountID='$_POST[username]'";);
+$userid=mysql_query("SELECT userAccountID FROM useraccount WHERE UserAccount.userAccountID='$_POST[username]'");
   
-$sql="INSERT INTO UserProfile(userAccountID,name, phoneNumber)
+$sql="INSERT INTO userprofile(userAccountID,name, phoneNumber)
 VALUES
 ($userid,'$_POST[namefield]','$_POST[tele]')";
 
