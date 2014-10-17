@@ -48,7 +48,7 @@
     </div>
     <div class="content">
       <div class="content_bg">
-        <div class="mainbar" id="invitation">
+        <div class="mainbar" id="invitation" style="visibility:hidden">
           <div class="article">
             <h2><span>Japanese Sushi</span></h2>
             <div class="clr"></div>
@@ -83,17 +83,17 @@
 			<script type="text/javascript">
                 function func1() {
 					
-					var invitation = "<?php echo $_SESSION["invitation"]; ?>";
+					var invitation1 = "<?php echo $_SESSION["invitation"]; ?>";
 					var apply = "<?php echo $_SESSION["apply"]; ?>";
 					var username = "<?php echo $_SESSION["username"]; ?>";
-					if (username == "Zhan Xiaoying" || invitation != "yes")
-						document.getElementById("invitation").style.visibility="hidden";
-					if (apply != "yes")
-                    	document.getElementById("zxy").style.visibility="hidden";
+					if (username == "Liu Xue" && invitation1 == "yes")
+						document.getElementById("invitation").style.visibility="visible";
+					if (apply == "yes")
+                    	document.getElementById("zxy").style.visibility="visible";
                 }
                 window.onload = func1;
             </script>            
-			<div class="sidebar" id="zxy">
+			<div class="sidebar" id="zxy" style="visibility:hidden">
             <div class="comment" > <a href="#"><img src="images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
               <p><a href="#">Zhan Xiaoying</a> applys:<br />
                 Oct 24th, 2014 at 2:17 pm</p>
@@ -139,9 +139,9 @@
             <div class="clr"></div>
             <ul class="sb_menu">
               <li class="active"><a href="index.php">Restaurant</a></li>
-              <li><a href="event_Movie.html">Movie</a></li>
-              <li><a href="event_Travelling.html">Travelling</a></li>
-              <li><a href="event_Outdoor.html">Outdoor Activities</a></li>
+              <li><a href="event_Movie.php">Movie</a></li>
+              <li><a href="event_Travelling.php">Travelling</a></li>
+              <li><a href="event_Outdoor.php">Outdoor Activities</a></li>
             </ul>
           </div>
           <div class="gadget">

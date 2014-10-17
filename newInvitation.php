@@ -49,7 +49,7 @@
           </div>
           <div class="article">
             <div class="clr"></div>
-            <form action="#" method="post" id="sendemail">
+            <form action="setInvitation.php" method="post" id="sendemail">
               <ol>
                 <li>
                   <label for="title">Title</label>
@@ -82,16 +82,9 @@
                   <input id="paying" name="paying" class="text"/>
                 </li>
                 <li>
-                  <input type="image" name="imageField" id="imageField" src="images/submit.gif" class="send" onclick="invitation()"/>
+                 <input type="image" name="imageField" id="imageField" src="images/submit.gif" class="send" /> </li>
                   <div class="clr"></div>
-                   <script>
-					function invitation() {
-						<?php
-						$_SESSION["invitation"] = "yes";
-						echo $_SESSION["invitation"];
-						?> 
-					}
-					</script>
+                  
                 </li>
               </ol>
             </form>

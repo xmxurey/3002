@@ -9,19 +9,41 @@
     <title>Login Form</title>
     <link href="login.css" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+	<script type="text/javascript">
+	function validateForm()
+	{ var x=document.forms["Register"]["username"].value;
+	      y=document.forms["Register"]["password1"].value;
+	      z=document.forms["Register"]["password2"].value;
+		  l=document.forms["Register"]["namefield"].value;
+		  m=document.forms["Register"]["tele"].value;
+	if (x==""||x==null||y==""||y==null||z==""||z==null||l==""||l==null||m==""||m==null){
+		alert("Empty filed(s)");
+		return false;
+	}
+	if(y!=z){
+		alert("Different confirmation password");
+		return false;
+	}
+	
+	}
+	</script>
+	
+	
+	
   </head>
   <body>
     <section class="container">
       <div class="login">
         <h1>Sign Up Here</h1>
-        <form method="post" action="index.html">
-          <p><label>Username: &nbsp;</label><input align="right" type="text" name="login" value="" ></p>
-          <p><label>Password: &nbsp;</label><input type="password" name="password1" value=""></p>
-          <p><label>Confirm: &nbsp;&nbsp;</label><input type="password" name="password2" value=""></p>
-          <p><label>Name: &nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" name="namefield" value=""></p>
-          <p><label>Tele: </label><br><input align ="right" type="text" name="Gender" value=""></p>
-          <a href="login.html"><p class="submit"><input type="submit" name="commit" value="Sign Up"></p>
-          <a href="login.html"><p class="final"><input type="submit" name="commit" value="Cancel"></p>
+        <form name="Register" action="register.php" onsubmit="return validateForm()" method="post"> 
+          <p><label>Username: &nbsp;</label><input align="right" type="text" name="username" id="username" ></p>
+          <p><label>Password: &nbsp;</label><input type="password" name="password1" id="password1"></p>
+          <p><label>Confirm: &nbsp;&nbsp;</label><input type="password" name="password2" id="password2"></p>
+          <p><label>Name: &nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" name="namefield" id="namefield"></p>
+          <p><label>Tele: </label><br><input align ="right" type="text" name="tele" id="tele"></p>
+          <a href="login.html"><p class="submit"> <input value="Send" type="submit"></p>
+          <a href="login.html"><p class="final"><input value="Cancel" type="reset"> </p>
         </form>
       </div>
     </section>

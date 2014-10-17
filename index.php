@@ -160,7 +160,7 @@
               </tbody>
             </table>
             <div align="right">
-            <button class="btn" onclick="myFunction2()" id="apply2">Apply </button>
+            <button class="btn" onclick="myFunction2()" id="apply2"> Apply </button>
             <script>
 			function myFunction2() {
 				if (document.getElementById("apply2").textContent == "Withdraw"){
@@ -171,10 +171,7 @@
 				else if (confirm("Confirm to apply?") == true) {
 						document.getElementById("apply2").textContent = "Withdraw";
 					} 
-				<?php
-            	$_SESSION["apply"] = "yes";
-				echo $_SESSION["apply"];
-            	?> 
+				window.location.href = "setApply.php";
 			}
 			</script>
             </div>

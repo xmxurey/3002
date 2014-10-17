@@ -7,8 +7,8 @@
 		
 		var data = "<?php echo $_SESSION["apply"]; ?>";
 		var username = "<?php echo $_SESSION["username"]; ?>";
-		if (data != "yes")
-			document.getElementById("sushi").style.visibility="hidden";
+		if (data == "yes")
+			document.getElementById("sushi").style.visibility="visible";
 	}
 	window.onload = func1;
 </script> 
@@ -86,7 +86,7 @@
               </tbody>
             </table>
             <div align="right">
-            <button class="btn1" id="cancel" onclick="Cancel()">Cancel Application</button>
+            <button class="btn1" id="cancel" onClick="Cancel()">Cancel Application</button>
             <script>
 				function Cancel(){
 					if (confirm("Confirm to Cancel this application?") == true) {
@@ -97,7 +97,7 @@
             </div>
             <div class="clr"></div>
           </div>
-          <div class="article" id="sushi">
+          <div class="article" id="sushi" style="visibility:hidden">
             <h2><span>Japanese Sushi</span></h2>
             <div class="clr"></div>
             <p class="post-data"><span class="date">Sept 14, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Liu Xue</a> &nbsp;|&nbsp; </p>
@@ -123,7 +123,7 @@
               </tbody>
             </table>
             <div align="right">
-            <button class="btn1" id="cancel" onclick="Cancel1()">Cancel Application</button>
+            <button class="btn1" id="cancel" onClick="Cancel1()">Cancel Application</button>
             <script>
 				function Cancel1(){
 					if (confirm("Confirm to Cancel this application?") == true) {
