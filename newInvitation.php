@@ -1,5 +1,7 @@
 <?php
 	session_start();
+	$_SESSION["username"] = "alice001";
+	$username=$_SESSION["username"];
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,8 +23,8 @@
         <h1><a href="#"><span>Strangers</span><small>Go and meet someone</small></a></h1>
       </div>
       <div align="right">
-        <form method="get" action="#">
-          <h2>Welcome, <?php echo $_SESSION["username"]; ?> </h2>
+
+          <h2>Welcome, <?php echo $username?> </h2>
           <a href="login.php">Log Out</a>
         </form>
       </div>
@@ -49,7 +51,9 @@
           </div>
           <div class="article">
             <div class="clr"></div>
-            <form action="setInvitation.php" method="post" id="sendemail">
+			
+			
+           <form action="newinvitationprocess.php?username=alice001" method="post" enctype="multipart/form-data" name="uploadform">
               <ol>
                 <li>
                   <label for="title">Title</label>
@@ -57,7 +61,7 @@
                 </li>
                 <li>
                   <label for="description">Type</label>
-                  <select id = "demo1" enabled>
+                  <select name="type" id = "demo1" enabled>
                 	<option value = "Restaurant">Restaurant</option>
                 	<option value = "Movie">Movie</option>
                     <option value = "Travelling">Travelling</option>
@@ -67,7 +71,7 @@
                 <li>
                   <label for="time">Time</label>
                   <input type="date" />
-                  <input type="time" />
+                  
                 </li>
                 <li>
                   <label for="venue">Venue</label>
@@ -75,19 +79,41 @@
                 </li>
                 <li>
                   <label for="description">No. of People</label>
-                  <input id="description" name="description" class="text"/>
+                  <input id="numberOfPeople" name="numberOfPeople" class="text"/>
                 </li>
                 <li>
                   <label for="paying">Paying Method</label>
                   <input id="paying" name="paying" class="text"/>
                 </li>
+				<br>
+				
                 <li>
-                 <input type="image" name="imageField" id="imageField" src="images/submit.gif" class="send" /> </li>
+			        <input type="hidden" name="MAX_FILE_SIZE" value="350000">
+			        <input name="picture" type="file" id="picture" size="50">
+				 </li>
+				 <br>
+				 <br>
+ 				<p>	<input name="upload" type="submit" id="upload" value="Submit"></p>
+				 <!-- <li>
+                  <input type="image" name="imageField" id="imageField" src="images/submit.gif" class="send" onclick="invitation()"/>
                   <div class="clr"></div>
-                  
-                </li>
+                   <script>
+					function invitation() {
+						<?php
+						$_SESSION["invitation"] = "yes";
+						echo $_SESSION["invitation"];
+						?>
+					}
+					</script>
+                </li> -->
               </ol>
             </form>
+			
+			
+
+			
+			
+			
           </div>
         </div>
         <div class="sidebar">
@@ -123,3 +149,4 @@
 </div>
 </body>
 </html>
+

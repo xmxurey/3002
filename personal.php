@@ -1,5 +1,36 @@
 <?php
+    include "connect.php";
 	session_start();
+	$_SESSION["username"] = "bob001";
+	$username=$_SESSION["username"];
+	
+	
+	$query="SELECT * FROM useraccount WHERE username='$username'";
+	$re=mysql_query($query);
+	$rowa = mysql_fetch_row($re);
+
+	if (!$re)
+	  { echo '<script language="javascript">window.alert("Error1");</script>';
+	echo '<script language="javascript">window.location="Register.html";</script>';
+	  die();
+
+	}
+	if($rowa==null){
+		 echo '<script language="javascript">window.alert("No row");</script>';
+		
+	}
+	
+	$query="SELECT * FROM userprofile WHERE userAccountID=$rowa[0]";
+	$re=mysql_query($query);
+	$rowb = mysql_fetch_row($re);
+
+	if (!$re)
+	  { echo '<script language="javascript">window.alert("Error2");</script>';
+	echo '<script language="javascript">window.location="Register.html";</script>';
+	  die();
+
+	}
+	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -22,7 +53,7 @@
       </div>
       <div align="right">
         <form method="get" action="#">
-          <h2>Welcome, <?php echo $_SESSION["username"]; ?> </h2>
+          <h2>Welcome, <?php echo $username?> </h2>
           <a href="login.php">Log Out</a>
         </form>
       </div>
@@ -45,19 +76,19 @@
   <tbody>
     <tr>
       <th>&nbsp;Gender</th>
-      <td>&nbsp;Gender</td>
+      <td>&nbsp;<?php echo $rowb[2]?></td>
     </tr>
     <tr>      
      <th scope="row">&nbsp;Home Address</th>
-      <td>&nbsp;Nanyang Technological University, Hall crescent</td>
+      <td>&nbsp;<?php echo $rowb[6]?></td>
     </tr>
     <tr>
       <th scope="row">&nbsp;Phone</th>
-      <td>&nbsp;82345321</td>
+      <td>&nbsp;<?php echo $rowb[3]?></td>
     </tr>
     <tr>
       <th scope="row">&nbsp;Email</th>
-      <td>&nbsp;fsdajjf@gmail.com</td>
+      <td>&nbsp;<?php echo $rowb[7]?></td>
     </tr>
   </tbody>
 </table>

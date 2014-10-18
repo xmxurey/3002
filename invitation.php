@@ -77,7 +77,7 @@ while($row = mysqli_fetch_array($re)) {
             <h2><span>Japanese Sushi</span></h2>
             <div class=\"clr\"></div>
             <p class=\"post-data\"><span class=\"date\">" . $row['postTime'] . "</span> &nbsp;|&nbsp; Posted by <a href=\"#\">Liu Xue</a> &nbsp;|&nbsp; </p>
-            <a href=\"#\"></a><img src=" . $row['image'] . " alt=\"\" width=\"400\" height=\"240\"/>
+            <a href=\"#\"></a><img src=\"data:image/jpeg;base64," .base64_encode($row['image']) . "\" alt=\"\" width=\"400\" height=\"240\"/>
             <table width=\"500\">
               <tbody>
                 <tr>
