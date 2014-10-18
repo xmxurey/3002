@@ -43,9 +43,9 @@ echo '<script language="javascript">window.location="Register.html";</script>';
 
 }
 
-$sql="INSERT INTO userprofile(userAccountID,name, phoneNumber)
+$sql="INSERT INTO userprofile(userAccountID,name, phoneNumber,userAccountIDPK)
 VALUES
-($row[0],'$_POST[username]','$_POST[password1]')";
+($row[0],'$_POST[username]','$_POST[password1]',$row[0])";
 
 $rs=mysql_query($sql);
 if (!$rs)
