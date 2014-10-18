@@ -18,6 +18,7 @@
 <section class="container">
 <div class="login">
 <p>
+
 <?php
 include "connect.php";
 
@@ -45,7 +46,11 @@ echo '<script language="javascript">window.location="Register.html";</script>';
 
 $sql="INSERT INTO userprofile(userAccountID,name, phoneNumber,userAccountIDPK)
 VALUES
+<<<<<<< HEAD
 ($row[0],'$_POST[username]','$_POST[password1]',$row[0])";
+=======
+($row[0],'$_POST[namefield]','$_POST[tele]')";
+>>>>>>> origin/master
 
 $rs=mysql_query($sql);
 if (!$rs)
@@ -58,11 +63,11 @@ echo '<script language="javascript">window.location="Register.html";</script>';
 
 
 else{
-echo ("Congratulation! You have successfully registered!");
+    $_SESSION["username"] = $_POST[username];
+    echo '<script language="javascript">window.location="index.php";</script>';
 }
 
-
-mysql_close();
+    mysql_close();
 ?>
 </p>
 </div>
