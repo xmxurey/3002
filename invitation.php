@@ -1,7 +1,23 @@
 <?php
+	//include "connect.php";
 	session_start();
 ?>
+<?php
 
+$con = mysqli_connect("localhost","root","root","cz3002");
+//check connection
+if (mysqli_connect_errno()) {
+	echo "Failed to connect to MySQL: ".mysqli_connect_error();
+}
+//$query = "select * from invitation where userAccountID = '$_SESSION[userAccountID]'";
+$query = "select * from invitation where userAccountID = '1'";
+
+$re = mysqli_query($con,$query);
+
+//$row = mysql_fetch_row($re);
+
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -44,12 +60,50 @@
         </ul>
         <div class="clr"></div>
       </div>
+	  
+	  
+	  
       <div class="hbg"><img src="images/header_images.jpg" width="923" height="291" alt="" /></div>
     </div>
     <div class="content">
       <div class="content_bg">
-        <div class="mainbar" id="invitation" style="visibility:hidden">
-          <div class="article">
+        <div class="mainbar" id="invitation" >
+   
+		  <?php 
+
+while($row = mysqli_fetch_array($re)) {
+	print "
+	<div class=\"article\">
+            <h2><span>Japanese Sushi</span></h2>
+            <div class=\"clr\"></div>
+            <p class=\"post-data\"><span class=\"date\">" . $row['postTime'] . "</span> &nbsp;|&nbsp; Posted by <a href=\"#\">Liu Xue</a> &nbsp;|&nbsp; </p>
+            <a href=\"#\"></a><img src=" . $row['image'] . " alt=\"\" width=\"400\" height=\"240\"/>
+            <table width=\"500\">
+              <tbody>
+                <tr>
+                  <th scope=\"row\">&nbsp;Date:</th>
+                  <td>&nbsp;<span class=\"date\">" . $row['time'] . "</span></td>
+                </tr>
+                <tr>
+                  <th scope=\"row\">&nbsp; Venue</th>
+                  <td>" . $row['venue'] . "</td>
+                </tr>
+                <tr>
+                  <th scope=\"row\">&nbsp;NO. of people</th>
+                  <td>" . $row['numberOfPeople'] . "</td>
+                </tr>
+                <tr>
+                  <th scope=\"row\">&nbsp; Paying Method</th>
+                  <td>" . $row['payingMethod'] . "</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class=\"clr\"></div>
+          </div>
+		  ";
+		  }
+	?>
+		  <!-- <div class="article">
             <h2><span>Japanese Sushi</span></h2>
             <div class="clr"></div>
             <p class="post-data"><span class="date">Oct 10, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Liu Xue</a> &nbsp;|&nbsp; </p>
@@ -79,7 +133,7 @@
           <div class="article">	
             <h2>Application(s)</h2>
             <div class="clr"></div>
-            
+            -->
 			<script type="text/javascript">
                 function func1() {
 					
