@@ -14,6 +14,7 @@ $query = "select * from invitation where userAccountID = '1'";
 
 $re = mysqli_query($con,$query);
 
+
 //$row = mysql_fetch_row($re);
 
 
@@ -101,40 +102,65 @@ while($row = mysqli_fetch_array($re)) {
             <div class=\"clr\"></div>
           </div>
 		  ";
+		  
+		  $query2 = "select useraccount.* from useraccount 
+           inner join application on (application.userAccountID = useraccount.userAccountID)
+           inner join invitation on (application.invitationID = invitation.invitationID)
+		   where invitation.invitationID = '" . $row['invitationID'] . "'";
+
+		   $re2 = mysqli_query($con,$query2);
+		  while($row2 = mysqli_fetch_array($re2)) {
+		  
+		  $query3 = "select applicationTime from application where userAccountID = '" . $row2['userAccountID'] . "'";
+		  $re3 = mysqli_query($con,$query3);
+		  $row3 = mysqli_fetch_array($re3);
+		  
+			print "
+			<div class=\"sidebar\" id=\"zxy\">
+            <div class=\"comment\" > <a href=\"#\"><img src=\"images/userpic.gif\" width=\"40\" height=\"40\" alt=\"\" class=\"userpic\" /></a>
+              <p><a href=\"#\">" . $row2['username'] . "</a> applys:<br />
+                " .$row3['applicationTime']. "</p>
+             
+              <div align=\"right\">
+                <button class=\"btn1\" id=\"accept3\" onclick=\"Accept3()\">Accept</button>
+                <button class=\"btn1\" id=\"reject3\" onclick=\"Reject3()\">Reject</button>
+                <script>
+					function Accept3(){
+						if (document.getElementById(\"accept3\").textContent == \"Accepted(Cancel)\"){
+							if (confirm(\"Confirm to cancel?\") == true) {
+								document.getElementById(\"accept3\").textContent = \"Accept\";
+								document.getElementById(\"reject3\").style.visibility=\"visible\";
+							} 
+						}
+						else if (confirm(\"Confirm to accept this application?\") == true) {
+								document.getElementById(\"accept3\").textContent = \"Accepted(Cancel)\";
+								document.getElementById(\"reject3\").style.visibility=\"hidden\";
+						}
+					}
+					
+					function Reject3(){
+						if (document.getElementById(\"reject3\").textContent == \"Rejected(Cancel)\"){
+							if (confirm(\"Confirm to cancel?\") == true) {
+								document.getElementById(\"reject3\").textContent = \"Reject\";
+								document.getElementById(\"accept3\").style.visibility=\"visible\";
+							} 
+						}
+						else if (confirm(\"Confirm to reject this application?\") == true) {
+								document.getElementById(\"reject3\").textContent = \"Rejected(Cancel)\";
+								document.getElementById(\"accept3\").style.visibility=\"hidden\";
+						}
+					}
+				</script>
+              </div>
+            </div>
+            </div>";
+		  
+		  }
+		  echo "<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>";
 		  }
 	?>
-		  <!-- <div class="article">
-            <h2><span>Japanese Sushi</span></h2>
-            <div class="clr"></div>
-            <p class="post-data"><span class="date">Oct 10, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Liu Xue</a> &nbsp;|&nbsp; </p>
-            <a href="#"></a><img src="images/Japanese Sushi.jpg" alt="" width="400" height="240"/>
-            <table width="500">
-              <tbody>
-                <tr>
-                  <th scope="row">&nbsp;Date:</th>
-                  <td>&nbsp;<span class="date">5:00 PM Oct 30, 2015</span></td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp; Venue</th>
-                  <td>&nbsp; City Hall </td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp;NO. of people</th>
-                  <td>&nbsp;2</td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp; Paying Method</th>
-                  <td>&nbsp; AA </td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="clr"></div>
-          </div>
-          <div class="article">	
-            <h2>Application(s)</h2>
-            <div class="clr"></div>
-            -->
-			<script type="text/javascript">
+		 
+			<!--<script type="text/javascript">
                 function func1() {
 					
 					var invitation1 = "<?php echo $_SESSION["invitation"]; ?>";
@@ -147,7 +173,7 @@ while($row = mysqli_fetch_array($re)) {
                 }
                 window.onload = func1;
             </script>            
-			<div class="sidebar" id="zxy" style="visibility:hidden">
+			<div class="sidebar" id="zxy">
             <div class="comment" > <a href="#"><img src="images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
               <p><a href="#">Zhan Xiaoying</a> applys:<br />
                 Oct 24th, 2014 at 2:17 pm</p>
@@ -184,7 +210,7 @@ while($row = mysqli_fetch_array($re)) {
 				</script>
               </div>
             </div>
-            </div>
+            </div>-->
           </div>
         </div>
         <div class="sidebar">
