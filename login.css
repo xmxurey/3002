@@ -129,13 +129,13 @@ input[type=submit] {
   border-radius: 16px;
   outline: 0;
   }
-  input[type=final] {
+input[type=final] {
+  text-align: center;
   padding: 0 30px;
+  width: 39px;
   height: 29px;
   font-size: 12px;
   font-weight: bold;
-  float: right;
-  position: relative;
   color: #527881;
   text-shadow: 0 1px #e3f1f1;
   background: #cde5ef;
