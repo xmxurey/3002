@@ -46,11 +46,7 @@ echo '<script language="javascript">window.location="Register.html";</script>';
 
 $sql="INSERT INTO userprofile(userAccountID,name, phoneNumber,userAccountIDPK)
 VALUES
-<<<<<<< HEAD
-($row[0],'$_POST[username]','$_POST[password1]',$row[0])";
-=======
 ($row[0],'$_POST[namefield]','$_POST[tele]')";
->>>>>>> origin/master
 
 $rs=mysql_query($sql);
 if (!$rs)
@@ -59,8 +55,6 @@ echo '<script language="javascript">window.location="Register.html";</script>';
   die();
 
 }
-
-
 
 else{
     $_SESSION["username"] = $_POST[username];
