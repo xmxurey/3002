@@ -1,17 +1,7 @@
 <?php
 	session_start();
+    include "connect.php";
 ?>
-
-<script type="text/javascript">
-	function func1() {
-		
-		var data = "<?php echo $_SESSION["apply"]; ?>";
-		var username = "<?php echo $_SESSION["username"]; ?>";
-		if (data == "yes")
-			document.getElementById("sushi").style.visibility="visible";
-	}
-	window.onload = func1;
-</script> 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -60,80 +50,71 @@
     <div class="content">
       <div class="content_bg">
         <div class="mainbar">
-          <div class="article" id="DTF">
-            <h2><span>Din Tai Fung</span></h2>
-            <div class="clr"></div>
-            <p class="post-data"><span class="date">Oct 01, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Mengxing</a> &nbsp;|&nbsp; </p>
-            <img src="images/dintaifung-workshop-26.jpg" alt="" width="400" height="269"/>
-			<table width="00">
-              <tbody>
-                <tr>
-                  <th scope="row">&nbsp;Date:</th>
-                  <td>&nbsp;<span class="date">5:00 PM Nov 16, 2015</span></td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp; Venue</th>
-                  <td>&nbsp; Jurong Point </td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp;NO. of people</th>
-                  <td>&nbsp;4</td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp; Paying Method</th>
-                  <td>&nbsp; AA </td>
-                </tr>
-              </tbody>
-            </table>
-            <div align="right">
-            <button class="btn1" id="cancel" onClick="Cancel()">Cancel Application</button>
-            <script>
-				function Cancel(){
-					if (confirm("Confirm to Cancel this application?") == true) {
-								document.getElementById("DTF").style.visibility="hidden";
-					}
-				}
-			</script>
-            </div>
-            <div class="clr"></div>
-          </div>
-          <div class="article" id="sushi" style="visibility:hidden">
-            <h2><span>Japanese Sushi</span></h2>
-            <div class="clr"></div>
-            <p class="post-data"><span class="date">Sept 14, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Liu Xue</a> &nbsp;|&nbsp; </p>
-            <a href="#"></a><img src="images/Japanese Sushi.jpg" alt="" width="400" height="240"/>
-            <table width="00">
-              <tbody>
-                <tr>
-                  <th scope="row">&nbsp;Date:</th>
-                  <td>&nbsp;<span class="date">5:00 PM March 16, 2015</span></td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp; Venue</th>
-                  <td>&nbsp; City Hall </td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp;NO. of people</th>
-                  <td>&nbsp;2</td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp; Paying Method</th>
-                  <td>&nbsp; AA </td>
-                </tr>
-              </tbody>
-            </table>
-            <div align="right">
-            <button class="btn1" id="cancel" onClick="Cancel1()">Cancel Application</button>
-            <script>
-				function Cancel1(){
-					if (confirm("Confirm to Cancel this application?") == true) {
-								document.getElementById("sushi").style.visibility="hidden";
-					}
-				}
-			</script>
-            </div>
-            <div class="clr"></div>
-          </div>
+            <?php
+            $username = $_SESSION["username"];
+            $query="SELECT userAccountID FROM useraccount WHERE username= '$username'";
+            $rs=mysql_query($query);
+            $accountID = mysql_fetch_row($rs);
+            if (!$rs)
+            { echo '<script language="javascript">window.alert("Error");</script>';
+                die();
+            }
+
+            $query1="SELECT * FROM application WHERE userAccountID = '$accountID[0]'";
+            $rs1=mysql_query($query1);
+            if (!$rs1)
+            { echo '<script language="javascript">window.alert("Error2");</script>';
+                die();
+            }
+
+            while($invitation = mysql_fetch_row($rs1)) {
+
+                $invitationID = $invitation[0];
+                $_SESSION["invitationID"] = $invitationID;
+                $query2="SELECT * FROM invitation WHERE invitationID = '$invitationID'";
+                $rs2=mysql_query($query2);
+                if (!$rs2)
+                { echo '<script language="javascript">window.alert("Error3");</script>';
+                    die();
+                }
+
+                while ($row = mysql_fetch_row($rs2)){
+                    echo "
+                    <div class=\"article\">
+                        <h2><span>" . $row['title'] . "</span></h2>
+                        <div class=\"clr\"></div>
+                        <p class=\"post-data\"><span class=\"date\">" . $row['postTime'] . "</span> &nbsp;|&nbsp; Posted by <a href=\"#\">$username</a> &nbsp;|&nbsp; </p>
+                        <a href=\"#\"></a><img src=\"data:image/jpeg;base64," .base64_encode($row['image']) . "\" alt=\"\" width=\"400\" height=\"240\"/>
+                        <table width=\"500\">
+                          <tbody>
+                            <tr>
+                              <th scope=\"row\">&nbsp;Date:</th>
+                              <td>&nbsp;<span class=\"date\">" . $row['time'] . "</span></td>
+                            </tr>
+                            <tr>
+                              <th scope=\"row\">&nbsp; Venue</th>
+                              <td>" . $row['venue'] . "</td>
+                            </tr>
+                            <tr>
+                              <th scope=\"row\">&nbsp;NO. of people</th>
+                              <td>" . $row['numberOfPeople'] . "</td>
+                            </tr>
+                            <tr>
+                              <th scope=\"row\">&nbsp; Paying Method</th>
+                              <td>" . $row['paying'] . "</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class=\"clr\"></div>
+                    </div> ";
+                    echo "
+                    <div align='right'>
+                    <button class=\"btn1\" id=\"cancel\" > <a href=\"cancelApplication.php\"> Cancel Application</a> </button>
+                    </div>";
+                }
+            }
+            ?>
+
         </div>
         <div class="sidebar">
           <div class="gadget">
@@ -157,6 +138,7 @@
         </div>
         <div class="clr"></div>
       </div>
+    </div>
     </div>
   </div>
 </div>
