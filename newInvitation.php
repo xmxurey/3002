@@ -83,7 +83,7 @@
                 </li>
                 <li>
                   <label for="invdate">Date</label>
-                  <input id="datepicker" name="invdate" type="date" />
+                  <input id="datepicker" name="invdate" type="text" />
                   
                 </li>
                 <li>
@@ -121,12 +121,6 @@
                 </li> -->
               </ol>
             </form>
-			
-			
-
-			
-			
-			
           </div>
         </div>
         <div class="sidebar">
