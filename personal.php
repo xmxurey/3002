@@ -1,26 +1,13 @@
 <?php
-    include "connect.php";
 	session_start();
-	$_SESSION["username"] = "bob001";
+    include "connect.php";
+
+	
 	$username=$_SESSION["username"];
+	$userAccountID=$_SESSION["userAccountID"];
 	
-	
-	$query="SELECT * FROM useraccount WHERE username='$username'";
-	$re=mysql_query($query);
-	$rowa = mysql_fetch_row($re);
 
-	if (!$re)
-	  { echo '<script language="javascript">window.alert("Error1");</script>';
-	echo '<script language="javascript">window.location="Register.html";</script>';
-	  die();
-
-	}
-	if($rowa==null){
-		 echo '<script language="javascript">window.alert("No row");</script>';
-		
-	}
-	
-	$query="SELECT * FROM userprofile WHERE userAccountID=$rowa[0]";
+	$query="SELECT * FROM userprofile WHERE userAccountID=$userAccountID";
 	$re=mysql_query($query);
 	$rowb = mysql_fetch_row($re);
 
@@ -75,8 +62,16 @@
 	<table width="500" align="center">
   <tbody>
     <tr>
+      <th>&nbsp;Name</th>
+      <td>&nbsp;<?php echo $rowb[1]?></td>
+    </tr>  
+    <tr>
       <th>&nbsp;Gender</th>
       <td>&nbsp;<?php echo $rowb[2]?></td>
+    </tr>
+    <tr>
+      <th scope="row">&nbsp;Date of Birth</th>
+      <td>&nbsp;<?php echo $rowb[5]?></td>
     </tr>
     <tr>      
      <th scope="row">&nbsp;Home Address</th>
@@ -90,10 +85,12 @@
       <th scope="row">&nbsp;Email</th>
       <td>&nbsp;<?php echo $rowb[7]?></td>
     </tr>
+    
   </tbody>
 </table>
 <div align="center">
-<button class="btn1" onclick="myFunction()" id="apply">Edit </button>
+
+<a href = "editprofile.php">Edit</a>
 </div>
   </div>
 </div>

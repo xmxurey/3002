@@ -1,12 +1,15 @@
-<?php
-	session_start();
+  <?php
+    session_start();
+	include "connect.php";
+	$username=$_SESSION["username"];
+	$userAccountID=$_SESSION["userAccountID"];
+ 
 ?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>SocialNet</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>SocialNet</title>
+
 <link href="style.css" rel="stylesheet" type="text/css" />
 <link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css" />
 <link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css" />
@@ -28,9 +31,8 @@
       </div>
       <div align="right">
         <form method="get" action="#">
-          <h2>Welcome, 
-		  <?php echo $_SESSION["username"]; ?> </h2>
-          <a href="login.php">Log Out</a>
+          <h2>Welcome,<?php  echo $username;?> </h2>
+          <a href="logout.php">Log Out</a>
         </form>
       </div>
       <div class="clr"></div>
@@ -50,133 +52,92 @@
     <div class="content">
       <div class="content_bg">
         <div class="mainbar">
-          <div class="article">
-            <h2><span>Seoul Garden</span></h2>
-            <div class="clr"></div>
-            <p class="post-data"><span class="date">Sept 14, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Weinan</a> &nbsp;|&nbsp; </p>
-            <a href="#"></a><img src="images/Seoul Garden + Singapore River Revosed Cruise 2.jpg" width="468" height="312" alt=""/>
-            <table width="00">
-              <tbody>
-                <tr>
-                  <th scope="row">&nbsp;Date:</th>
-                  <td>&nbsp;<span class="date">5:00 PM March 16, 2015</span></td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp; Venue</th>
-                  <td>&nbsp; City Hall </td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp;NO. of people</th>
-                  <td>&nbsp;2</td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp; Paying Method</th>
-                  <td>&nbsp; AA </td>
-                </tr>
-              </tbody>
-            </table>
-            <div align="right">
-            <button class="btn" onclick="myFunction()" id="apply">Apply </button>
-            <script>
-			function myFunction() {
-				if (document.getElementById("apply").textContent == "Withdraw"){
-					if (confirm("Confirm to wsithdraw?") == true) {
-						document.getElementById("apply").textContent = "Apply";
-					} 
-				}
-				else if (confirm("Confirm to apply?") == true) {
-						document.getElementById("apply").textContent = "Withdraw";
-					}
-			}
-			</script>
-            </div>
-            <div class="clr"></div>
-          </div>
-          <div class="article">
-            <h2><span>Din Tai Fung</span></h2>
-            <div class="clr"></div>
-            <p class="post-data"><span class="date">Oct 01, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Mengxing</a> &nbsp;|&nbsp; </p>
-            <img src="images/dintaifung-workshop-26.jpg" alt="" width="400" height="269"/>
-			<table width="00">
-              <tbody>
-                <tr>
-                  <th scope="row">&nbsp;Date:</th>
-                  <td>&nbsp;<span class="date">5:00 PM Nov 16, 2015</span></td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp; Venue</th>
-                  <td>&nbsp; Jurong Point </td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp;NO. of people</th>
-                  <td>&nbsp;4</td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp; Paying Method</th>
-                  <td>&nbsp; AA </td>
-                </tr>
-              </tbody>
-            </table>
-            <div align="right">
-            <button class="btn" onclick="myFunction1()" id="apply1">Apply </button>
-            <script>
-			function myFunction1() {
-				if (document.getElementById("apply1").textContent == "Withdraw"){
-					if (confirm("Confirm to wsithdraw?") == true) {
-						document.getElementById("apply1").textContent = "Apply";
-					} 
-				}
-				else if (confirm("Confirm to apply?") == true) {
-						document.getElementById("apply1").textContent = "Withdraw";
-					} 
-			}
-			</script>
-            </div>
-            <div class="clr"></div>
-          </div>
-          <div class="article">
-            <h2><span>Japanese Sushi</span></h2>
-            <div class="clr"></div>
-            <p class="post-data"><span class="date">Oct 16, 2014</span> &nbsp;|&nbsp; Posted by <a href="#">Liu Xue</a> &nbsp;|&nbsp; </p>
-            <a href="#"></a><img src="images/Japanese Sushi.jpg" alt="" width="400" height="240"/>
-            <table width="00">
-              <tbody>
-                <tr>
-                  <th scope="row">&nbsp;Date:</th>
-                  <td>&nbsp;<span class="date">5:00 PM Oct 29, 2015</span></td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp; Venue</th>
-                  <td>&nbsp; City Hall </td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp;NO. of people</th>
-                  <td>&nbsp;3</td>
-                </tr>
-                <tr>
-                  <th scope="row">&nbsp; Paying Method</th>
-                  <td>&nbsp; I treat </td>
-                </tr>
-              </tbody>
-            </table>
-            <div align="right">
-            <button class="btn" onclick="myFunction2()" id="apply2"> Apply </button>
-            <script>
-			function myFunction2() {
-				if (document.getElementById("apply2").textContent == "Withdraw"){
-					if (confirm("Confirm to wsithdraw?") == true) {
-						document.getElementById("apply2").textContent = "Apply";
-					} 
-				}
-				else if (confirm("Confirm to apply?") == true) {
-						document.getElementById("apply2").textContent = "Withdraw";
-					} 
-				window.location.href = "setApply.php";
-			}
-			</script>
-            </div>
-            <div class="clr"></div>
-          </div>
+
+    
+	
+  
+<?php	
+	if(isset($_GET['eventType'])) {
+		 $eventType = $_GET['eventType'];
+	}
+	else{
+		$eventType=Restaurant;
+	}
+	
+    
+    $sql="SELECT * FROM invitation WHERE type='$eventType'";
+    $rs = mysql_query($sql); 
+   
+    while($row = mysql_fetch_row($rs)) {
+		 $_SESSION["invitationID"] = $row[0];
+		$temp=$row[0];
+		 $query="SELECT * FROM useraccount WHERE userAccountID=$row[1]";
+		 $result = mysql_query($query); 
+		 $r= mysql_fetch_row($result);
+    	echo("
+		    <div class='article'>
+		      <h2><span>$row[9]</span></h2>
+		      <div class='clr'></div>
+		      <p class='post-data'><span class='date'>$row[8]</span> &nbsp;|&nbsp; Posted by <a href='#'>$r[1]</a> &nbsp;|&nbsp; </p>
+		 
+		
+		 <img name='17'
+		 		src='getphoto3.php?invid=$row[0]'
+		 		alt='Unable to view image'
+				width='500'
+				hight='240'
+				align='center'
+		  >
+		 
+	 
+		      <table width='500'>
+		        <tbody>
+		          <tr>
+		            <th scope='row'>&nbsp;Date:</th>
+		            <td>&nbsp;<span class='date'>$row[2]</span></td>
+		          </tr>
+		          <tr>
+		            <th scope='row'>&nbsp; Venue</th>
+		            <td>&nbsp; $row[3]</td>
+		          </tr>
+		          <tr>
+		            <th scope='row'>&nbsp;No. of people</th>
+		            <td>&nbsp;$row[4]</td>
+		          </tr>
+		          <tr>
+		            <th scope='row'>&nbsp;Openings Left</th>
+		            <td>&nbsp;$row[6]</td>
+		          </tr>
+				  
+		          <tr>
+		            <th scope='row'>&nbsp; Paying Method</th>
+		            <td>&nbsp; $row[5] </td>
+		          </tr>
+		        </tbody>
+		      </table>
+		      
+		      <div class='clr'></div>
+		    </div>
+			
+			
+
+			
+			");
+			
+            print "
+            <div align='right'>
+            <button class=\"btn1\" id=\"apply\" > <a href=\"apply.php\"> Apply</a> </button>
+            </div>";
+
+   
+
+    }
+  	mysql_close();
+	
+    ?>
+	
+		  
+		  
           <div class="pagenavi"><span class="pages">Page 1 of 2</span><span class="current">1</span><a href="#">2</a><a href="clear.php" >&raquo;</a></div>
         </div>
         <div class="sidebar">
@@ -184,10 +145,62 @@
             <h2 class="star"><span>Event</span> List</h2>
             <div class="clr"></div>
             <ul class="sb_menu">
-              <li class="active"><a href="index.php">Restaurant</a></li>
-              <li><a href="event_Movie.php">Movie</a></li>
-              <li><a href="event_Travelling.php">Travelling</a></li>
-              <li><a href="event_Outdoor.php">Outdoor Activities</a></li>
+				
+	<?
+	//$eventType=Restaurant;
+	if($eventType==Restaurant){
+			echo("
+				
+                <li class='active'><a href='index.php?eventType=Restaurant'>Restaurant</a></li>
+                <li><a href='index.php?eventType=Movie'>Movie</a></li>
+                <li><a href='index.php?eventType=Travelling'>Travelling</a></li>
+                <li><a href='index.php?eventType=Outdoor_Activities'>Outdoor Activities</a></li>
+				
+				
+			");	
+	}
+	
+	if($eventType==Movie){
+			echo("
+				
+                <li><a href='index.php?eventType=Restaurant'>Restaurant</a></li>
+                <li class='active'><a href='index.php?eventType=Movie'>Movie</a></li>
+                <li><a href='index.php?eventType=Travelling'>Travelling</a></li>
+                <li><a href='index.php?eventType=Outdoor_Activities'>Outdoor Activities</a></li>
+				
+				
+			");	
+	}
+	
+	if($eventType==Travelling){
+			echo("
+				
+                <li><a href='index.php?eventType=Restaurant'>Restaurant</a></li>
+                <li><a href='index.php?eventType=Movie'>Movie</a></li>
+                <li  class='active'><a href='index.php?eventType=Travelling'>Travelling</a></li>
+                <li><a href='index.php?eventType=Outdoor_Activities'>Outdoor Activities</a></li>
+				
+				
+			");	
+		}
+			
+			if($eventType==Outdoor_Activities){
+					echo("
+				
+		                <li><a href='index.php?eventType=Restaurant'>Restaurant</a></li>
+		                <li><a href='index.php?eventType=Movie'>Movie</a></li>
+		                <li><a href='index.php?eventType=Travelling'>Travelling</a></li>
+		     <li class='active'><a href='index.php?eventType=Outdoor_Activities'>Outdoor Activities</a></li>
+				
+				
+					");		
+	
+			}
+	
+	 ?>		
+	 
+	
+              
             </ul>
           </div>
           <div class="gadget">
@@ -217,3 +230,5 @@ $(function() {
 </script>
 </body>
 </html>
+
+

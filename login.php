@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -12,24 +13,30 @@
 	  <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	</head>
 	<body>
-	  <section class="container">
+
+    <!-- establish database connection -->
+
+    <section class="container">
 	    <div class="login">
 	      <h1>Welcome to Stranger!</h1>
-	      <form method="post" action="login_autojump.php">
-	        <p><input type="text" name="login" value="" placeholder="Username or Email"></p>
-	        <p><input type="password" name="password" value="" placeholder="Password"></p>
+	      <form method="post" action="validateUser.php">
+	        <p> Username  <br>
+                <input type="text" name="username" id="username" value="" placeholder="Username"></p>
+	        <p> Password <br>
+                <input type="password" name="password" id="password" value="" placeholder="Password"></p>
 	        <p class="remember_me">
 	          <label>
 	            <input type="checkbox" name="remember_me" id="remember_me">
 	            Remember me
 	          </label>
 	        </p>
-	        <a href="index.html"><p class="submit"><input type="submit" name="commit" value="Login"></p>
+	        <p class="submit"> <input type="submit" name="commit" value="Login"></p>
 	        <a href = "">Forget Your Password?</a>
 	        <br>
 	        <a href = "Register.html">New User?</a>
 	      </form>
-	    </div>
+
+        </div>
 	  </section>
 	</body>
 </html>

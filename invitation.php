@@ -1,6 +1,17 @@
 <?php
 	//include "connect.php";
+	//global $row, $row3;
 	session_start();
+	$username=$_SESSION["username"];
+	$userAccountID=$_SESSION["userAccountID"];
+	//$username='Liu Xue';
+	//$userAccountID='1';
+	if(isset($_GET['eventType'])) {
+		 $eventType = $_GET['eventType'];
+	}
+	else{
+		$eventType=Restaurant;
+	}
 ?>
 <?php
 
@@ -10,14 +21,25 @@ if (mysqli_connect_errno()) {
 	echo "Failed to connect to MySQL: ".mysqli_connect_error();
 }
 //$query = "select * from invitation where userAccountID = '$_SESSION[userAccountID]'";
-$query = "select * from invitation where userAccountID = '1'";
-
+$query = "select * from invitation where userAccountID = '$userAccountID' and type='$eventType'";
+//$query = "select * from invitation where userAccountID = '$userAccountID'";
 $re = mysqli_query($con,$query);
 
 
 //$row = mysql_fetch_row($re);
-
-
+/*function accept(&$row,&$row3){
+	$query4 = "update application
+		set status = 'accepted'
+		where applicationID = '" . $row3['applicationID'] . "'";
+	$re4 = mysqli_query($con,$query4);
+	$query5 = "update invitation
+		set status = status - 1
+		where invitationID = '" . $row['invitationID'] . "'";
+	$re5 = mysqli_query($con,$query5);
+	$query6 = "insert into datingrecord(applicationID)
+		values ('" . $row3['applicationID'] . "')";
+	$re6 = mysqli_query($con,$query6);
+}*/
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -45,7 +67,7 @@ $re = mysqli_query($con,$query);
       </div>
       <div align="right">
         <form method="get" action="#">
-          <h2>Welcome, <?php echo $_SESSION["username"]; ?> </h2>
+          <h2>Welcome, <?php echo $username; ?> </h2>
           <a href="login.php">Log Out</a>
         </form>
       </div>
@@ -73,29 +95,38 @@ $re = mysqli_query($con,$query);
 		  <?php 
 
 while($row = mysqli_fetch_array($re)) {
+	 $invitationID = $row[0];
+                
+	$_SESSION["invitationID"] = $invitationID;
+	
+	
 	print "
 	<div class=\"article\">
-            <h2><span>Japanese Sushi</span></h2>
+            <h2><span>" . $row['title'] . "</span></h2>
             <div class=\"clr\"></div>
-            <p class=\"post-data\"><span class=\"date\">" . $row['postTime'] . "</span> &nbsp;|&nbsp; Posted by <a href=\"#\">Liu Xue</a> &nbsp;|&nbsp; </p>
-            <a href=\"#\"></a><img src=\"data:image/jpeg;base64," .base64_encode($row['image']) . "\" alt=\"\" width=\"400\" height=\"240\"/>
+            <p class=\"post-data\"><span class=\"date\">" . $row['postTime'] . "</span> &nbsp;|&nbsp; Posted by <a href=\"#\">$username</a> &nbsp;|&nbsp; </p>
+            <a href=\"#\"></a><img src=\"data:image/jpeg;base64," .base64_encode($row['image']) . "\" alt=\"\" width=\"500\" height=\"300\"/>
             <table width=\"500\">
               <tbody>
                 <tr>
                   <th scope=\"row\">&nbsp;Date:</th>
-                  <td>&nbsp;<span class=\"date\">" . $row['time'] . "</span></td>
+                  <td>&nbsp;<span class=\"date\">" . $row['invdate'] . "</span></td>
                 </tr>
                 <tr>
                   <th scope=\"row\">&nbsp; Venue</th>
                   <td>" . $row['venue'] . "</td>
                 </tr>
                 <tr>
-                  <th scope=\"row\">&nbsp;NO. of people</th>
+                  <th scope=\"row\">&nbsp;No. of people</th>
                   <td>" . $row['numberOfPeople'] . "</td>
                 </tr>
                 <tr>
+                  <th scope=\"row\">&nbsp;Openings Left</th>
+                  <td>" . $row['status'] . "</td>
+                </tr>
+                <tr>
                   <th scope=\"row\">&nbsp; Paying Method</th>
-                  <td>" . $row['payingMethod'] . "</td>
+                  <td>" . $row['paying'] . "</td>
                 </tr>
               </tbody>
             </table>
@@ -111,20 +142,50 @@ while($row = mysqli_fetch_array($re)) {
 		   $re2 = mysqli_query($con,$query2);
 		  while($row2 = mysqli_fetch_array($re2)) {
 		  
-		  $query3 = "select applicationTime from application where userAccountID = '" . $row2['userAccountID'] . "'";
+		  $query3 = "select * from application where userAccountID = '" . $row2['userAccountID'] . "'";
 		  $re3 = mysqli_query($con,$query3);
 		  $row3 = mysqli_fetch_array($re3);
+		  $applicationID = $row3[0];
+    
+		  $_SESSION["applicationID"] = $applicationID;
 		  
+			echo $_SESSION["applicationID"].'  '.$invitationID;
 			print "
 			<div class=\"sidebar\" id=\"zxy\">
             <div class=\"comment\" > <a href=\"#\"><img src=\"images/userpic.gif\" width=\"40\" height=\"40\" alt=\"\" class=\"userpic\" /></a>
               <p><a href=\"#\">" . $row2['username'] . "</a> applys:<br />
-                " .$row3['applicationTime']. "</p>
+                " .$row3['applicationTime']. "</p>";
              
+			 if($row3[3] == 'accepted'){
+				print"
+					<div align=\"right\">
+					<button class=\"btn1\" id=\"accept3\">Accepted</button>";
+				}
+			else if($row3[3] == 'rejected'){
+				print"
+					<div align=\"right\">
+					<button class=\"btn1\" id=\"reject3\">rejected</button>";
+				}
+			else {
+			 print"
               <div align=\"right\">
-                <button class=\"btn1\" id=\"accept3\" onclick=\"Accept3()\">Accept</button>
-                <button class=\"btn1\" id=\"reject3\" onclick=\"Reject3()\">Reject</button>
-                <script>
+				$invitationID &nbsp $row3[3] &nbsp $applicationID
+                <button class=\"btn1\" id=\"accept3\"><a href=\"acceptApplication.php?i=".$invitationID."&j=" .$applicationID. "\">Accept</a></button>
+                <button class=\"btn1\" id=\"reject3\"><a href=\"rejectApplication.php?i=".$invitationID."&j=" .$applicationID. "\">Reject</a></button>";
+				}
+           print"    
+              </div>
+            </div>
+            </div>";
+		  
+		  }
+		  echo "<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>";
+		  }
+	?>
+		 
+			<!--<script type="text/javascript">
+			
+			 <script>
 					function Accept3(){
 						if (document.getElementById(\"accept3\").textContent == \"Accepted(Cancel)\"){
 							if (confirm(\"Confirm to cancel?\") == true) {
@@ -133,6 +194,7 @@ while($row = mysqli_fetch_array($re)) {
 							} 
 						}
 						else if (confirm(\"Confirm to accept this application?\") == true) {
+								
 								document.getElementById(\"accept3\").textContent = \"Accepted(Cancel)\";
 								document.getElementById(\"reject3\").style.visibility=\"hidden\";
 						}
@@ -151,16 +213,7 @@ while($row = mysqli_fetch_array($re)) {
 						}
 					}
 				</script>
-              </div>
-            </div>
-            </div>";
-		  
-		  }
-		  echo "<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>";
-		  }
-	?>
-		 
-			<!--<script type="text/javascript">
+			
                 function func1() {
 					
 					var invitation1 = "<?php echo $_SESSION["invitation"]; ?>";
@@ -217,12 +270,64 @@ while($row = mysqli_fetch_array($re)) {
           <div class="gadget">
             <h2 class="star"><span>Event</span> List</h2>
             <div class="clr"></div>
-            <ul class="sb_menu">
-              <li class="active"><a href="index.php">Restaurant</a></li>
-              <li><a href="event_Movie.php">Movie</a></li>
-              <li><a href="event_Travelling.php">Travelling</a></li>
-              <li><a href="event_Outdoor.php">Outdoor Activities</a></li>
-            </ul>
+		            <ul class="sb_menu">
+				
+			<?
+			//$eventType=Restaurant;
+			if($eventType==Restaurant){
+					echo("
+				
+		                <li class='active'><a href='invitation.php?eventType=Restaurant'>Restaurant</a></li>
+		                <li><a href='invitation.php?eventType=Movie'>Movie</a></li>
+		                <li><a href='invitation.php?eventType=Travelling'>Travelling</a></li>
+		                <li><a href='invitation.php?eventType=Outdoor_Activities'>Outdoor Activities</a></li>
+				
+				
+					");	
+			}
+	
+			if($eventType==Movie){
+					echo("
+				
+		                <li><a href='invitation.php?eventType=Restaurant'>Restaurant</a></li>
+		                <li class='active'><a href='invitation.php?eventType=Movie'>Movie</a></li>
+		                <li><a href='invitation.php?eventType=Travelling'>Travelling</a></li>
+		                <li><a href='invitation.php?eventType=Outdoor_Activities'>Outdoor Activities</a></li>
+				
+				
+					");	
+			}
+	
+			if($eventType==Travelling){
+					echo("
+				
+		                <li><a href='invitation.php?eventType=Restaurant'>Restaurant</a></li>
+		                <li><a href='invitation.php?eventType=Movie'>Movie</a></li>
+		                <li  class='active'><a href='invitation.php?eventType=Travelling'>Travelling</a></li>
+		                <li><a href='invitation.php?eventType=Outdoor_Activities'>Outdoor Activities</a></li>
+				
+				
+					");	
+				}
+			
+					if($eventType==Outdoor_Activities){
+							echo("
+				
+				                <li><a href='invitation.php?eventType=Restaurant'>Restaurant</a></li>
+				                <li><a href='invitation.php?eventType=Movie'>Movie</a></li>
+				                <li><a href='invitation.php?eventType=Travelling'>Travelling</a></li>
+				     <li class='active'><a href='invitation.php?eventType=Outdoor_Activities'>Outdoor Activities</a></li>
+				
+				
+							");		
+	
+					}
+	
+			 ?>		
+	 
+	
+              
+		            </ul>
           </div>
           <div class="gadget">
             <h2 class="star"><span>Wise Words</span></h2>

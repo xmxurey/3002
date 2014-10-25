@@ -1,7 +1,11 @@
 <?php 
 // connect to the database
+	session_start();
 	include "connect.php";
-	$username=$_GET['username'];
+	
+	
+	$username=$_SESSION["username"];
+	$userAccountID=$_SESSION["userAccountID"];
 	
 	
 	$query="SELECT * FROM useraccount WHERE username='$username'";
@@ -50,9 +54,9 @@ if(isset($_POST['upload']))
 	list($width, $height, $typeb, $attr) = getimagesize($tmp_name);
 
 	// if width is over 600 px or height is over 500 px, kill it
-	if($width>600 || $height>500)
+	if($width>1200 || $height>1000)
 	{
-		echo $name . "'s dimensions exceed the 600x500 pixel limit.";
+		echo $name . "'s dimensions exceed the 1200x1000 pixel limit.";
 		die();
 	}
 
@@ -69,7 +73,7 @@ if(isset($_POST['upload']))
 	}
 
 	// if the file size is larger than 350 KB, kill it
-	if($size>'350000') {
+	if($size>'750000') {
 
 			echo '<script language="javascript">window.alert("Picture exceeds size.");</script>';
 			echo '<script language="javascript">window.location="newinvitation.php";</script>';
@@ -89,9 +93,9 @@ if(isset($_POST['upload']))
 
 	
 
-	$sql="INSERT INTO invitation(userAccountID, venue, paying, numberOfPeople, title, type, image)
+	$sql="INSERT INTO invitation(userAccountID, venue, paying, numberOfPeople, title, type, image, postTime,status,imagetype,imagesize,imagename,invdate)
 	VALUES
-	($row[0],'$_POST[venue]','$_POST[paying]','$_POST[numberOfPeople]', '$_POST[title]','$_POST[type]','$content')";
+	($row[0],'$_POST[venue]','$_POST[paying]','$_POST[numberOfPeople]', '$_POST[title]','$_POST[type]','$content',NOW(),'$_POST[numberOfPeople]','$type','$size','$name','$_POST[invdate]')";
 
 	$rs=mysql_query($sql);
 	if (!$rs)
@@ -104,7 +108,7 @@ if(isset($_POST['upload']))
 
 	//mysql_query($addfile) or die(mysql_error());
 
-	$inserted_fid = mysql_insert_id();
+	$inserted_invitationID = mysql_insert_id();
 
 	mysql_close();
 

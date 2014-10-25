@@ -1,7 +1,11 @@
 <?php
 	session_start();
-	$_SESSION["username"] = "alice001";
+	
 	$username=$_SESSION["username"];
+	$userAccountID=$_SESSION["userAccountID"];
+	
+	
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -53,7 +57,7 @@
             <div class="clr"></div>
 			
 			
-           <form action="newinvitationprocess.php?username=alice001" method="post" enctype="multipart/form-data" name="uploadform">
+           <form action="newinvitationprocess.php" method="post" enctype="multipart/form-data" name="uploadform">
               <ol>
                 <li>
                   <label for="title">Title</label>
@@ -69,8 +73,8 @@
              	  </select>
                 </li>
                 <li>
-                  <label for="time">Time</label>
-                  <input type="date" />
+                  <label for="invdate">Date</label>
+                  <input id="invdate" name="invdate" type="date" />
                   
                 </li>
                 <li>
@@ -121,10 +125,58 @@
             <h2 class="star"><span>Event</span> List</h2>
             <div class="clr"></div>
             <ul class="sb_menu">
-              <li class="active"><a href="index.php">Restaurant</a></li>
-              <li><a href="event_Movie.php">Movie</a></li>
-              <li><a href="event_Travelling.php">Travelling</a></li>
-              <li><a href="event_Outdoor.php">Outdoor Activities</a></li>
+			<?
+			//$eventType=Restaurant;
+			if($eventType==Restaurant){
+					echo("
+				
+		                <li class='active'><a href='index.php?eventType=Restaurant'>Restaurant</a></li>
+		                <li><a href='index.php?eventType=Movie'>Movie</a></li>
+		                <li><a href='index.php?eventType=Travelling'>Travelling</a></li>
+		                <li><a href='index.php?eventType=Outdoor_Activities'>Outdoor Activities</a></li>
+				
+				
+					");	
+			}
+	
+			if($eventType==Movie){
+					echo("
+				
+		                <li><a href='index.php?eventType=Restaurant'>Restaurant</a></li>
+		                <li class='active'><a href='index.php?eventType=Movie'>Movie</a></li>
+		                <li><a href='index.php?eventType=Travelling'>Travelling</a></li>
+		                <li><a href='index.php?eventType=Outdoor_Activities'>Outdoor Activities</a></li>
+				
+				
+					");	
+			}
+	
+			if($eventType==Travelling){
+					echo("
+				
+		                <li><a href='index.php?eventType=Restaurant'>Restaurant</a></li>
+		                <li><a href='index.php?eventType=Movie'>Movie</a></li>
+		                <li  class='active'><a href='index.php?eventType=Travelling'>Travelling</a></li>
+		                <li><a href='index.php?eventType=Outdoor_Activities'>Outdoor Activities</a></li>
+				
+				
+					");	
+				}
+			
+					if($eventType==Outdoor_Activities){
+							echo("
+				
+				                <li><a href='index.php?eventType=Restaurant'>Restaurant</a></li>
+				                <li><a href='index.php?eventType=Movie'>Movie</a></li>
+				                <li><a href='index.php?eventType=Travelling'>Travelling</a></li>
+				     <li class='active'><a href='index.php?eventType=Outdoor_Activities'>Outdoor Activities</a></li>
+				
+				
+							");		
+	
+					}
+	
+			 ?>
             </ul>
           </div>
           <div class="gadget">

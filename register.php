@@ -20,6 +20,7 @@
 <p>
 
 <?php
+session_start();
 include "connect.php";
 
 $sql="INSERT INTO useraccount(username, password)
@@ -46,7 +47,8 @@ echo '<script language="javascript">window.location="Register.html";</script>';
 
 $sql="INSERT INTO userprofile(userAccountID,name, phoneNumber,userAccountIDPK)
 VALUES
-($row[0],'$_POST[namefield]','$_POST[tele]')";
+($row[0],'$_POST[namefield]','$_POST[tele]',$row[0])";
+
 
 $rs=mysql_query($sql);
 if (!$rs)
@@ -56,9 +58,23 @@ echo '<script language="javascript">window.location="Register.html";</script>';
 
 }
 
+
+
 else{
-    $_SESSION["username"] = $_POST[username];
-    echo '<script language="javascript">window.location="index.php";</script>';
+	
+    $sql = "select * from useraccount where username='$_POST[username]'";
+
+    $result = mysql_query($sql);
+    if (!$result) {
+        die('Invalid query: ' . mysql_error());
+    }
+
+    if ($res=mysql_fetch_array($result))
+    {
+    	$_SESSION["username"] = $res["username"];
+		$_SESSION["userAccountID"] = $res["userAccountID"];
+    	echo '<script language="javascript">window.location="index.php";</script>';
+	}
 }
 
     mysql_close();
