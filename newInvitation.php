@@ -13,20 +13,11 @@
 <title>SocialNet | Contact</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="style.css" rel="stylesheet" type="text/css" />
-<link href="jquery-ui.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/cufon-yui.js"></script>
 <script type="text/javascript" src="js/arial.js"></script>
 <script type="text/javascript" src="js/cuf_run.js"></script>
-<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
-<script type="text/javascript" src="js/jquery-ui.js"></script>
-
- <script>
-  $(function() {
-    $( "#datepicker" ).datepicker({ minDate:0});
-  });
-  </script>
 </head>
 <body>
 <div class="main">
@@ -83,7 +74,7 @@
                 </li>
                 <li>
                   <label for="invdate">Date</label>
-                  <input id="datepicker" name="invdate" type="text" />
+                  <input id="invdate" name="invdate" type="date" />
                   
                 </li>
                 <li>
@@ -121,6 +112,12 @@
                 </li> -->
               </ol>
             </form>
+			
+			
+
+			
+			
+			
           </div>
         </div>
         <div class="sidebar">

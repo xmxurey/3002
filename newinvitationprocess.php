@@ -94,7 +94,7 @@ if(isset($_POST['upload']))
 	
 
 	$sql="INSERT INTO invitation(userAccountID, venue, paying, numberOfPeople, title, type, image, postTime,status,imagetype,imagesize,imagename,invdate)
-	VALUES 
+	VALUES
 	($row[0],'$_POST[venue]','$_POST[paying]','$_POST[numberOfPeople]', '$_POST[title]','$_POST[type]','$content',NOW(),'$_POST[numberOfPeople]','$type','$size','$name','$_POST[invdate]')";
 
 	$rs=mysql_query($sql);
