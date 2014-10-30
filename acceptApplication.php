@@ -21,12 +21,18 @@ $query2 = "update invitation
 		set status = status - 1
 		where invitationID = '$invitationID'";
 $re2 = mysql_query($query2);
+
 $query3 = "insert into datingrecord(applicationID)
 		values ($applicationID)";
 $re3 = mysql_query($query3);
 
-if($re1&&$re2){
-	
+
+
+
+
+
+if($re1&&$re2&&$re3){
+
 	echo '<script language="javascript">window.alert("Application accepted");</script>';
 	echo '<script language="javascript">window.location="invitation.php";</script>';
 }

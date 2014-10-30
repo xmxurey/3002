@@ -57,9 +57,9 @@
 				 $eventType = $_GET['eventType'];
 			}
 			else{
-				$eventType='Restaurant';
+				$eventType=Restaurant;
 			}
-         // $query1= "select application.* from application inner join invitaion on (application.invitationID=invitation.invitationID) where application.userAccountID = $userAccountID and invitation.type='$eventType' ";
+         //$query1= "select application.* from application inner join invitaion on (application.invitationID=invitation.invitationID) where application.userAccountID = $userAccountID and invitation.type=$eventType ";
 
 
             $query1= "select * from application where userAccountID =$userAccountID ";
@@ -129,10 +129,13 @@
                         <div class=\"clr\"></div>
                     </div> ";
 					
+				if($application[3]!="rejected")	{
                     print "
                     <div align='right'>
                     <button class=\"btn1\" id=\"cancel\" > <a href=\"cancelApplication.php\"> Cancel Application</a> </button>
                     </div>";
+					
+				}
                 
             }
             ?>
