@@ -142,14 +142,14 @@ while($row = mysqli_fetch_array($re)) {
 		   $re2 = mysqli_query($con,$query2);
 		  while($row2 = mysqli_fetch_array($re2)) {
 		  
-		  $query3 = "select * from application where userAccountID = '" . $row2['userAccountID'] . "' and invitationID = '" . $invitationID . "'";
+		  $query3 = "select * from application where userAccountID = '" . $row2['userAccountID'] . "'";
 		  $re3 = mysqli_query($con,$query3);
 		  $row3 = mysqli_fetch_array($re3);
 		  $applicationID = $row3[0];
     
 		  $_SESSION["applicationID"] = $applicationID;
 		  
-			
+			echo $_SESSION["applicationID"].'  '.$invitationID;
 			print "
 			<div class=\"sidebar\" id=\"zxy\">
             <div class=\"comment\" > <a href=\"#\"><img src=\"images/userpic.gif\" width=\"40\" height=\"40\" alt=\"\" class=\"userpic\" /></a>

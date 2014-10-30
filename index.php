@@ -124,12 +124,11 @@
 			
 			");
 			
-			if($userAccountID!=$row[1]&&$row[6]>0){
-            	print "
-            		<div align='right'>
-            	<button class=\"btn1\" id=\"apply\" > <a href=\"apply.php\"> Apply</a> </button>
-            	</div>";
-			}
+            print "
+            <div align='right'>
+            <button class=\"btn1\" id=\"apply\" > <a href=\"apply.php\"> Apply</a> </button>
+            </div>";
+
    
 
     }
@@ -138,8 +137,8 @@
     ?>
 	
 		  
-
-<!--          <div class="pagenavi"><span class="pages">Page 1 of 2</span><span class="current">1</span><a href="#">2</a><a href="clear.php" >&raquo;</a></div> -->
+		  
+          <div class="pagenavi"><span class="pages">Page 1 of 2</span><span class="current">1</span><a href="#">2</a><a href="clear.php" >&raquo;</a></div>
         </div>
         <div class="sidebar">
           <div class="gadget">

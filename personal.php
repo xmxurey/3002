@@ -89,10 +89,8 @@
   </tbody>
 </table>
 <div align="center">
-	
 
-<button class="btn1" id="cancel" > <a href="editprofile.php">Edit</a> </button>
-<!-- <a href = "editprofile.php">Edit</a> -->
+<a href = "editprofile.php">Edit</a>
 </div>
   </div>
 </div>
