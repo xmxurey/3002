@@ -74,7 +74,9 @@
                 </li>
                 <li>
                   <label for="invdate">Date</label>
-                  <input id="invdate" name="invdate" type="date" />
+
+                  <input id="datepicker" name="invdate" type="date" />
+
                   
                 </li>
                 <li>
