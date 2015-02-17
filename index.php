@@ -78,8 +78,8 @@
 		    <div class='article'>
 		      <h2><span>$row[9]</span></h2>
 		      <div class='clr'></div>
-		      <p class='post-data'><span class='date'>$row[8]</span> &nbsp;|&nbsp; Posted by <a href='#'>$r[1]</a> &nbsp;|&nbsp; </p>
-		 
+		      <p class='post-data'><span class='date'>$row[8]</span> 
+		      		&nbsp;|&nbsp; Posted by <a href='#'>$r[1]</a> &nbsp;|&nbsp; </p>
 		
 		 <img name='17'
 		 		src='getphoto3.php?invid=$row[0]'
@@ -87,8 +87,7 @@
 				width='500'
 				hight='240'
 				align='center'
-		  >
-		 
+		  > 
 	 
 		      <table width='500'>
 		        <tbody>
@@ -117,11 +116,7 @@
 		      </table>
 		      
 		      <div class='clr'></div>
-		    </div>
-			
-			
-
-			
+		    </div>			
 			");
 			
 			if($userAccountID!=$row[1]&&$row[6]>0){

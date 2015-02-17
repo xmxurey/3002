@@ -74,9 +74,15 @@
                 </li>
                 <li>
                   <label for="invdate">Date</label>
+<<<<<<< HEAD
 
                   <input id="datepicker" name="invdate" type="date" />
 
+||||||| 947fd1d... add date selection
+                  <input id="datepicker" name="invdate" type="text" />
+=======
+                  <input id="datepicker" name="invdate" type="date" />
+>>>>>>> parent of 947fd1d... add date selection
                   
                 </li>
                 <li>
